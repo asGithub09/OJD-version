@@ -1,4 +1,11 @@
-﻿const express = require("express");
+﻿const dns = require("dns");
+
+dns.setServers([
+  "8.8.8.8",
+  "8.8.4.4",
+]);
+
+const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
@@ -30,9 +37,10 @@ const PORT = process.env.PORT || 5000;
  */
 
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://127.0.0.1:5173",
-];
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://ojd-version.vercel.app",
+  ];
 
 
 /*
