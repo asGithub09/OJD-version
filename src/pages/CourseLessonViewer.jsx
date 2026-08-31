@@ -589,8 +589,17 @@ function CourseLessonViewer({
       return;
     }
 
+    const targetModuleId =
+      lessonItem.module?._id ||
+      lessonItem.module ||
+      moduleId;
+
+    if (!targetModuleId) {
+      return;
+    }
+
     window.location.href =
-      `/course/${courseId}/lesson/${moduleId}/${lessonItem._id}`;
+      `/course/${courseId}/lesson/${targetModuleId}/${lessonItem._id}`;
   }
 
   /*
