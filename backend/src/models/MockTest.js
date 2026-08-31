@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+﻿const mongoose = require("mongoose");
 
 const mockTestSchema = new mongoose.Schema(
   {
@@ -131,12 +131,10 @@ mockTestSchema.index({ category: 1 });
 mockTestSchema.index({ examType: 1 });
 mockTestSchema.index({ displayOrder: 1 });
 
-mockTestSchema.pre("save", function (next) {
+mockTestSchema.pre("save", function () {
   if (this.passingMarks > this.totalMarks) {
-    return next(
-      new Error(
-        "Passing marks cannot exceed total marks."
-      )
+    throw new Error(
+      "Passing marks cannot exceed total marks."
     );
   }
 
@@ -144,17 +142,13 @@ mockTestSchema.pre("save", function (next) {
     this.originalPrice > 0 &&
     this.price > this.originalPrice
   ) {
-    return next(
-      new Error(
-        "Mock test price cannot exceed original price."
-      )
+    throw new Error(
+      "Mock test price cannot exceed original price."
     );
   }
-
-  next();
 });
 
-mockTestSchema.pre("findOneAndUpdate", function (next) {
+mockTestSchema.pre("findOneAndUpdate", function () {
   const update = this.getUpdate();
 
   const totalMarks =
@@ -182,10 +176,8 @@ mockTestSchema.pre("findOneAndUpdate", function (next) {
     passingMarks !== undefined &&
     Number(passingMarks) > Number(totalMarks)
   ) {
-    return next(
-      new Error(
-        "Passing marks cannot exceed total marks."
-      )
+    throw new Error(
+      "Passing marks cannot exceed total marks."
     );
   }
 
@@ -195,19 +187,15 @@ mockTestSchema.pre("findOneAndUpdate", function (next) {
     Number(originalPrice) > 0 &&
     Number(price) > Number(originalPrice)
   ) {
-    return next(
-      new Error(
-        "Mock test price cannot exceed original price."
-      )
+    throw new Error(
+      "Mock test price cannot exceed original price."
     );
   }
-
-  next();
 });
-
 const MockTest = mongoose.model(
   "MockTest",
   mockTestSchema
 );
 
 module.exports = MockTest;
+

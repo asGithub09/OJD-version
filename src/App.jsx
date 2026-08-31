@@ -4,6 +4,8 @@ import AdminCourseLessons from "./pages/Admin/AdminCourseLessons.jsx";
 import CourseDetails from "./pages/CourseDetails.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import AdminCourses from "./pages/Admin/AdminCourses.jsx";
+import AdminMockTests from "./pages/Admin/AdminMockTests.jsx";
+import AdminMockQuestions from "./pages/Admin/AdminMockQuestions.jsx";
 
 import AdminCourseModules from "./pages/Admin/AdminCourseModules.jsx";
 import { useEffect, useState } from "react";
@@ -576,6 +578,30 @@ if (courseLessonMatch) {
        */
       if (currentPath === "/admin/courses") {
         return <AdminCourses />;
+      }
+
+      /*
+       * ADMIN MOCK TESTS
+       * /admin/mock-tests
+       */
+      const adminMockQuestionsMatch =
+        currentPath.match(
+          /^\/admin\/mock-tests\/([^/]+)\/questions$/
+        );
+
+      if (adminMockQuestionsMatch) {
+        const mockTestId =
+          adminMockQuestionsMatch[1];
+
+        return (
+          <AdminMockQuestions
+            mockTestId={mockTestId}
+          />
+        );
+      }
+
+      if (currentPath === "/admin/mock-tests") {
+        return <AdminMockTests />;
       }
 
       /*
@@ -1701,6 +1727,10 @@ if (courseLessonMatch) {
 }
 
 export default App;
+
+
+
+
 
 
 
