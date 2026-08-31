@@ -1,30 +1,161 @@
-﻿import AdminLayout from "./AdminLayout.jsx";
+﻿import { useEffect, useState } from "react";
+
+import AdminLayout from "./AdminLayout.jsx";
+import { useAuth } from "../../auth/AuthContext.jsx";
+
+const API_BASE_URL = import.meta.env.PROD
+  ? "https://ojd-version.onrender.com/api"
+  : "http://127.0.0.1:5000/api";
+
+const emptyStats = {
+  students: {
+    total: 0,
+    active: 0,
+  },
+  courses: {
+    total: 0,
+    published: 0,
+  },
+  faculty: {
+    total: 0,
+    published: 0,
+  },
+  mockTests: {
+    total: 0,
+    published: 0,
+  },
+  modules: {
+    total: 0,
+    published: 0,
+  },
+  lessons: {
+    total: 0,
+    published: 0,
+  },
+  activity: [],
+};
+
+const activityLabels = {
+  COURSE: "Course",
+  FACULTY: "Faculty",
+  MOCK_TEST: "Mock Test",
+  MODULE: "Module",
+  LESSON: "Lesson",
+};
+
+const formatActivityDate = (value) => {
+  if (!value) {
+    return "";
+  }
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return "";
+  }
+
+  return date.toLocaleString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+};
 
 function AdminDashboard() {
-  const stats = [
+  const { token } = useAuth();
+
+  const [stats, setStats] = useState(emptyStats);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const loadStats = async () => {
+    if (!token) {
+      setLoading(false);
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError("");
+
+      const response = await fetch(
+        `${API_BASE_URL}/admin/stats`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message ||
+            "Unable to load administrator statistics."
+        );
+      }
+
+      setStats({
+        ...emptyStats,
+        ...(data.stats || {}),
+      });
+    } catch (err) {
+      console.error("Admin statistics load error:", err);
+
+      setError(
+        err.message ||
+          "Unable to load administrator statistics."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadStats();
+  }, [token]);
+
+  const statCards = [
     {
       label: "Total Students",
-      value: "0",
-      change: "Coming soon",
+      value: stats.students.total,
+      change: `${stats.students.active} active`,
       icon: "♙",
     },
     {
-      label: "Published Courses",
-      value: "0",
-      change: "Manage courses",
+      label: "Courses",
+      value: stats.courses.total,
+      change: `${stats.courses.published} published`,
       icon: "▤",
     },
     {
       label: "Faculty",
-      value: "0",
-      change: "Manage faculty",
+      value: stats.faculty.total,
+      change: `${stats.faculty.published} published`,
       icon: "◉",
     },
     {
       label: "Mock Tests",
-      value: "0",
-      change: "Manage tests",
+      value: stats.mockTests.total,
+      change: `${stats.mockTests.published} published`,
       icon: "✓",
+    },
+    {
+      label: "Course Modules",
+      value: stats.modules.total,
+      change: `${stats.modules.published} published`,
+      icon: "▥",
+    },
+    {
+      label: "Course Lessons",
+      value: stats.lessons.total,
+      change: `${stats.lessons.published} published`,
+      icon: "▧",
     },
   ];
 
@@ -54,8 +185,27 @@ function AdminDashboard() {
         </div>
       </section>
 
+      {error && (
+        <section className="admin-panel">
+          <div className="admin-empty-state">
+            <strong>
+              Unable to load dashboard statistics
+            </strong>
+
+            <p>{error}</p>
+
+            <button
+              type="button"
+              onClick={loadStats}
+            >
+              Try again
+            </button>
+          </div>
+        </section>
+      )}
+
       <section className="admin-stats-grid">
-        {stats.map((stat) => (
+        {statCards.map((stat) => (
           <article
             className="admin-stat-card"
             key={stat.label}
@@ -71,11 +221,13 @@ function AdminDashboard() {
             </div>
 
             <strong className="admin-stat-value">
-              {stat.value}
+              {loading ? "—" : stat.value}
             </strong>
 
             <span className="admin-stat-change">
-              {stat.change}
+              {loading
+                ? "Loading..."
+                : stat.change}
             </span>
           </article>
         ))}
@@ -149,20 +301,72 @@ function AdminDashboard() {
             </div>
           </div>
 
-          <div className="admin-empty-state">
-            <div className="admin-empty-icon">
-              ◌
+          {loading ? (
+            <div className="admin-empty-state">
+              <div className="admin-empty-icon">
+                ◌
+              </div>
+
+              <strong>
+                Loading activity
+              </strong>
+
+              <p>
+                Fetching the latest platform changes.
+              </p>
             </div>
+          ) : stats.activity.length === 0 ? (
+            <div className="admin-empty-state">
+              <div className="admin-empty-icon">
+                ◌
+              </div>
 
-            <strong>
-              No activity yet
-            </strong>
+              <strong>
+                No activity yet
+              </strong>
 
-            <p>
-              Activity will appear here as
-              your platform grows.
-            </p>
-          </div>
+              <p>
+                Activity will appear here as
+                your platform grows.
+              </p>
+            </div>
+          ) : (
+            <div className="admin-activity-list">
+              {stats.activity.map((item, index) => (
+                <div
+                  className="admin-activity-item"
+                  key={`${item.type}-${item.date}-${index}`}
+                >
+                  <div className="admin-activity-icon">
+                    {item.type === "COURSE"
+                      ? "▤"
+                      : item.type === "FACULTY"
+                        ? "◉"
+                        : item.type === "MOCK_TEST"
+                          ? "✓"
+                          : item.type === "MODULE"
+                            ? "▥"
+                            : "▧"}
+                  </div>
+
+                  <div className="admin-activity-content">
+                    <strong>
+                      {item.title}
+                    </strong>
+
+                    <span>
+                      {activityLabels[item.type] ||
+                        "Platform update"}
+                    </span>
+                  </div>
+
+                  <time>
+                    {formatActivityDate(item.date)}
+                  </time>
+                </div>
+              ))}
+            </div>
+          )}
         </article>
       </section>
     </AdminLayout>

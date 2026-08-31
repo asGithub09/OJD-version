@@ -1,4 +1,5 @@
 ﻿import { useAuth } from "../auth/AuthContext.jsx";
+import "./Dashboard.css";
 
 const roleLabels = {
   STUDENT: "Student",
@@ -121,3 +122,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
