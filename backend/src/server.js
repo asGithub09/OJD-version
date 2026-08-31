@@ -16,6 +16,7 @@ require("dotenv").config();
 const connectDB = require("./config/db");
 
 const authRoutes = require("./routes/authRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const courseModuleRoutes = require("./routes/courseModuleRoutes");
 const courseLessonRoutes = require("./routes/courseLessonRoutes");
@@ -148,6 +149,17 @@ app.use(
   authRoutes
 );
 
+
+
+/*
+ * Admin Dashboard
+ *
+ * /api/admin
+ */
+app.use(
+  "/api/admin",
+  adminRoutes
+);
 
 /*
  * Mock Tests
@@ -368,6 +380,7 @@ const startServer = async () => {
 
 
 startServer();
+
 
 
 
