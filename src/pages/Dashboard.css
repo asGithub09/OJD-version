@@ -210,3 +210,483 @@
     padding: 20px;
   }
 }
+.dashboard-page {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 42px 28px 70px;
+  box-sizing: border-box;
+  color: #18352b;
+}
+
+.dashboard-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 34px;
+}
+
+.dashboard-heading > div:first-child {
+  min-width: 0;
+}
+
+.dashboard-page .eyebrow {
+  margin: 0 0 8px;
+  color: #e56b18;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.dashboard-page h1 {
+  margin: 0;
+  color: #17382d;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.dashboard-description {
+  margin: 13px 0 0;
+  color: #6b7d74;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.role-badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 17px;
+  border: 1px solid rgba(229, 107, 24, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: #e56b18;
+  box-shadow: 0 8px 24px rgba(31, 67, 53, 0.08);
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   RESUME LEARNING
+   ============================================================ */
+
+.dashboard-resume-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  min-height: 250px;
+  margin-bottom: 22px;
+  padding: 32px 36px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid rgba(31, 67, 53, 0.1);
+  border-radius: 26px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(244, 250, 245, 0.94)
+    );
+  box-shadow:
+    0 20px 50px rgba(31, 67, 53, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.dashboard-resume-card::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -100px;
+  top: -130px;
+  border-radius: 50%;
+  background: rgba(72, 150, 78, 0.1);
+  pointer-events: none;
+}
+
+.dashboard-resume-content {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  max-width: 760px;
+  flex: 1 1 auto;
+}
+
+.dashboard-resume-kicker {
+  margin-bottom: 9px;
+  color: #e56b18;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.dashboard-resume-content h2 {
+  margin: 0;
+  color: #18382d;
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.dashboard-resume-content p {
+  margin: 10px 0 20px;
+  color: #6b7d74;
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.dashboard-progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 8px;
+  color: #6b7d74;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.dashboard-progress-meta strong {
+  color: #398040;
+}
+
+.dashboard-progress-track {
+  width: 100%;
+  height: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(72, 150, 78, 0.1);
+}
+
+.dashboard-progress-track span {
+  display: block;
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      90deg,
+      #e56b18,
+      #48964e
+    );
+  transition: width 300ms ease;
+}
+
+.dashboard-resume-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 19px;
+  border: 0;
+  border-radius: 12px;
+  background: #e56b18;
+  color: #ffffff;
+  box-shadow:
+    0 10px 24px rgba(229, 107, 24, 0.2);
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease;
+}
+
+.dashboard-resume-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow:
+    0 14px 30px rgba(229, 107, 24, 0.25);
+}
+
+.dashboard-resume-button:focus-visible {
+  outline: 3px solid rgba(229, 107, 24, 0.2);
+  outline-offset: 3px;
+}
+
+.dashboard-resume-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.dashboard-resume-visual {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      #48964e 0deg,
+      #48964e calc(var(--progress, 0) * 1deg),
+      rgba(72, 150, 78, 0.1)
+        calc(var(--progress, 0) * 1deg),
+      rgba(72, 150, 78, 0.1) 360deg
+    );
+}
+
+.dashboard-resume-ring {
+  display: grid;
+  place-items: center;
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow:
+    inset 0 0 0 1px rgba(31, 67, 53, 0.06);
+}
+
+.dashboard-resume-ring strong {
+  color: #398040;
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+/* ============================================================
+   DASHBOARD GRID
+   ============================================================ */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.dashboard-card {
+  position: relative;
+  min-height: 230px;
+  padding: 28px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid rgba(31, 67, 53, 0.09);
+  border-radius: 24px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(248, 251, 247, 0.9)
+    );
+  box-shadow:
+    0 18px 45px rgba(31, 67, 53, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.dashboard-card::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  right: -70px;
+  top: -75px;
+  border-radius: 50%;
+  background: rgba(72, 150, 78, 0.07);
+  pointer-events: none;
+}
+
+.dashboard-card-clickable {
+  cursor: pointer;
+}
+
+.dashboard-card-clickable:hover,
+.dashboard-card-clickable:focus-visible {
+  transform: translateY(-5px);
+  border-color: rgba(229, 107, 24, 0.25);
+  box-shadow:
+    0 24px 55px rgba(31, 67, 53, 0.13),
+    0 8px 24px rgba(229, 107, 24, 0.07);
+  outline: none;
+}
+
+.card-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 22px;
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(229, 107, 24, 0.13),
+      rgba(72, 150, 78, 0.13)
+    );
+  font-size: 1.45rem;
+}
+
+.dashboard-card h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #18382d;
+  font-size: 1.28rem;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.dashboard-card p {
+  position: relative;
+  z-index: 1;
+  max-width: 470px;
+  margin: 10px 0 22px;
+  color: #718078;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.card-status {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: rgba(72, 150, 78, 0.08);
+  color: #398040;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.dashboard-card-clickable .card-status {
+  background: rgba(229, 107, 24, 0.1);
+  color: #d85f12;
+}
+
+/* ============================================================
+   TABLET / MOBILE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .dashboard-resume-card {
+    padding: 28px;
+  }
+
+  .dashboard-resume-visual {
+    width: 145px;
+    height: 145px;
+  }
+
+  .dashboard-resume-ring {
+    width: 115px;
+    height: 115px;
+  }
+}
+
+@media (max-width: 760px) {
+  .dashboard-page {
+    padding: 30px 18px 50px;
+  }
+
+  .dashboard-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 26px;
+  }
+
+  .dashboard-resume-card {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 0;
+    padding: 25px;
+    border-radius: 22px;
+  }
+
+  .dashboard-resume-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .dashboard-resume-visual {
+    align-self: center;
+    width: 135px;
+    height: 135px;
+  }
+
+  .dashboard-resume-ring {
+    width: 107px;
+    height: 107px;
+  }
+
+  .dashboard-resume-ring strong {
+    font-size: 1.45rem;
+  }
+
+  .dashboard-resume-button {
+    width: 100%;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .dashboard-card {
+    min-height: 210px;
+    padding: 23px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .dashboard-page {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .dashboard-page h1 {
+    font-size: 1.9rem;
+  }
+
+  .dashboard-resume-card {
+    padding: 21px;
+    border-radius: 20px;
+  }
+
+  .dashboard-resume-content h2 {
+    font-size: 1.45rem;
+  }
+
+  .dashboard-progress-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .dashboard-resume-visual {
+    width: 120px;
+    height: 120px;
+  }
+
+  .dashboard-resume-ring {
+    width: 96px;
+    height: 96px;
+  }
+
+  .dashboard-card {
+    padding: 20px;
+  }
+}
