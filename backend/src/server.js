@@ -22,6 +22,7 @@ const courseModuleRoutes = require("./routes/courseModuleRoutes");
 const courseLessonRoutes = require("./routes/courseLessonRoutes");
 const facultyRoutes = require("./routes/facultyRoutes");
 const mockTestRoutes = require("./routes/mockTestRoutes");
+const mockTestAttemptRoutes = require("./routes/mockTestAttemptRoutes");
 const gamificationRoutes = require("./routes/gamificationRoutes");
 const mockQuestionRoutes = require("./routes/mockQuestionRoutes");
 const studentCourseProgressRoutes = require(
@@ -185,6 +186,16 @@ app.use(
   mockQuestionRoutes
 );
 
+
+/*
+ * Mock Test Attempts
+ *
+ * /api/mock-test-attempts
+ */
+app.use(
+  "/api/mock-test-attempts",
+  mockTestAttemptRoutes
+);
 /*
  * Gamification
  *

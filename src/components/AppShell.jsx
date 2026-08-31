@@ -60,6 +60,15 @@ function AppShell({ children }) {
       path: "/examinations",
     },
 
+        {
+      label: "Mock Tests",
+      icon: "◈",
+      roles: [
+        "STUDENT",
+      ],
+      path: "/mock-tests",
+    },
+
     {
       label: "Results",
       icon: "▥",
@@ -382,5 +391,6 @@ function AppShell({ children }) {
 }
 
 export default AppShell;
+
 
 

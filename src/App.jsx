@@ -13,6 +13,8 @@ import { useAuth } from "./auth/AuthContext.jsx";
 
 import AppShell from "./components/AppShell.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import MockTests from "./pages/MockTests.jsx";
+import MockTestAttempt from "./pages/MockTestAttempt.jsx";
 import MagicRings from "./components/MagicRings.jsx";
 import GlowCursor from "./components/GlowCursor.jsx";
 
@@ -631,6 +633,32 @@ if (courseLessonMatch) {
     /*
      * Normal authenticated user dashboard
      */
+    const mockTestAttemptMatch =
+      currentPath.match(
+        /^\/mock-tests\/([^/]+)$/
+      );
+
+    if (mockTestAttemptMatch) {
+      const attemptId =
+        mockTestAttemptMatch[1];
+
+      return (
+        <AppShell>
+          <MockTestAttempt
+            attemptId={attemptId}
+          />
+        </AppShell>
+      );
+    }
+
+    if (currentPath === "/mock-tests") {
+      return (
+        <AppShell>
+          <MockTests />
+        </AppShell>
+      );
+    }
+
     return (
       <AppShell>
         <Dashboard />
@@ -1673,3 +1701,7 @@ if (courseLessonMatch) {
 }
 
 export default App;
+
+
+
+

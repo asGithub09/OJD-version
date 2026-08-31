@@ -28,6 +28,10 @@ function Dashboard() {
     window.location.href = `/course/${UPSC_COURSE_ID}`;
   };
 
+  const openMockTests = () => {
+    window.location.href = "/mock-tests";
+  };
+
   const openResume = () => {
     const lastLesson = progress?.lastLesson;
 
@@ -307,6 +311,39 @@ function Dashboard() {
           </span>
         </article>
 
+        <article
+          className="dashboard-card dashboard-card-clickable dashboard-mock-tests-card"
+          onClick={openMockTests}
+          onKeyDown={(event) => {
+            if (
+              event.key === "Enter" ||
+              event.key === " "
+            ) {
+              event.preventDefault();
+              openMockTests();
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label="Open Mock Tests"
+        >
+          <div className="card-icon">
+            ◈
+          </div>
+
+          <h2>Mock Tests</h2>
+
+          <p>
+            Practice exam-style questions,
+            improve your score, and track your
+            preparation with real attempts.
+          </p>
+
+          <span className="card-status">
+            Explore Mock Tests →
+          </span>
+        </article>
+
         <article className="dashboard-card">
           <div className="card-icon">
             📊
@@ -346,4 +383,6 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+
 

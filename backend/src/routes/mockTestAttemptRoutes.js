@@ -187,6 +187,7 @@ router.post(
           "Mock test submitted successfully.",
         attempt: result.attempt,
         mockTest: result.mockTest,
+        gamification: result.gamification,
       });
     } catch (error) {
       next(error);
@@ -195,3 +196,4 @@ router.post(
 );
 
 module.exports = router;
+

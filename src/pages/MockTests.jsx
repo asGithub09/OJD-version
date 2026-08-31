@@ -2,7 +2,10 @@
 import { useAuth } from "../auth/AuthContext.jsx";
 import "./MockTests.css";
 
-const API_BASE_URL = "/api";
+const API_BASE_URL =
+  import.meta.env.PROD
+    ? "https://ojd-version.onrender.com/api"
+    : "http://127.0.0.1:5000/api";
 
 const formatDuration = (minutes) => {
   const value = Number(minutes) || 0;
@@ -139,14 +142,64 @@ function MockTests() {
     );
   };
 
-  const startTest = (test) => {
+  const startTest = async (test) => {
     if (!isLoggedIn) {
       openAuth("login");
       return;
     }
 
-    window.location.href =
-      `/mock-test/${test._id}`;
+    if (!test?._id) {
+      setError("Unable to start this mock test.");
+      return;
+    }
+
+    try {
+      setError("");
+
+      const response = await fetch(
+        `${API_BASE_URL}/mock-test-attempts/start/${test._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message ||
+            "Unable to start the mock test."
+        );
+      }
+
+      const attemptId =
+        data.attempt?._id ||
+        data.attempt?.id;
+
+      if (!attemptId) {
+        throw new Error(
+          "Mock test started, but no attempt ID was returned."
+        );
+      }
+
+      window.location.href =
+        `/mock-tests/${attemptId}`;
+    } catch (err) {
+      console.error(
+        "Mock test start error:",
+        err
+      );
+
+      setError(
+        err.message ||
+          "Unable to start the mock test."
+      );
+    }
   };
 
   return (
@@ -523,3 +576,7 @@ function MockTests() {
 }
 
 export default MockTests;
+
+
+
+
