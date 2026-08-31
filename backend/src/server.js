@@ -22,6 +22,7 @@ const courseModuleRoutes = require("./routes/courseModuleRoutes");
 const courseLessonRoutes = require("./routes/courseLessonRoutes");
 const facultyRoutes = require("./routes/facultyRoutes");
 const mockTestRoutes = require("./routes/mockTestRoutes");
+const gamificationRoutes = require("./routes/gamificationRoutes");
 const mockQuestionRoutes = require("./routes/mockQuestionRoutes");
 const studentCourseProgressRoutes = require(
   "./routes/studentCourseProgressRoutes"
@@ -182,6 +183,16 @@ app.use(
 app.use(
   "/api/mock-tests",
   mockQuestionRoutes
+);
+
+/*
+ * Gamification
+ *
+ * /api/gamification
+ */
+app.use(
+  "/api/gamification",
+  gamificationRoutes
 );
 
 /*
@@ -392,4 +403,3 @@ const startServer = async () => {
 
 
 startServer();
-
