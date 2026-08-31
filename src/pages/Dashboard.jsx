@@ -2,9 +2,7 @@
 import { useAuth } from "../auth/AuthContext.jsx";
 import "./Dashboard.css";
 
-const API_BASE_URL = import.meta.env.PROD
-  ? "https://ojd-version.onrender.com/api"
-  : "http://127.0.0.1:5000/api";
+const API_BASE_URL = "/api";
 
 const roleLabels = {
   STUDENT: "Student",
@@ -22,26 +20,30 @@ function Dashboard() {
   const roleLabel = roleLabels[role] || role;
 
   const [progress, setProgress] = useState(null);
-  const [progressLoading, setProgressLoading] = useState(true);
+  const [progressLoading, setProgressLoading] = useState(
+    role === "STUDENT"
+  );
 
   const openCourses = () => {
     window.location.href = `/course/${UPSC_COURSE_ID}`;
   };
 
   const openResume = () => {
+    const lastLesson = progress?.lastLesson;
+
     if (
-      progress?.lastLesson &&
-      progress.lastLesson._id
+      lastLesson &&
+      typeof lastLesson === "object" &&
+      lastLesson._id
     ) {
-      const lesson = progress.lastLesson;
       const moduleId =
-        lesson.module?._id ||
-        lesson.module ||
-        progress.lastLessonModuleId;
+        lastLesson.module?._id ||
+        lastLesson.module ||
+        "";
 
       if (moduleId) {
         window.location.href =
-          `/course/${UPSC_COURSE_ID}/lesson/${moduleId}/${lesson._id}`;
+          `/course/${UPSC_COURSE_ID}/lesson/${moduleId}/${lastLesson._id}`;
 
         return;
       }
@@ -54,7 +56,18 @@ function Dashboard() {
     let cancelled = false;
 
     async function loadProgress() {
-      if (!token || role !== "STUDENT") {
+      /*
+       * Only STUDENT accounts are authorized to access
+       * the student course-progress endpoint.
+       *
+       * ADMIN / TEACHER / SUPER_ADMIN should not make
+       * a request that will intentionally return 403.
+       */
+      if (
+        role !== "STUDENT" ||
+        !token
+      ) {
+        setProgress(null);
         setProgressLoading(false);
         return;
       }
@@ -92,6 +105,11 @@ function Dashboard() {
         );
 
         if (!cancelled) {
+          /*
+           * Progress is supplementary dashboard information.
+           * A failure must never prevent the dashboard itself
+           * from rendering.
+           */
           setProgress(null);
         }
       } finally {
@@ -112,7 +130,9 @@ function Dashboard() {
     100,
     Math.max(
       0,
-      Number(progress?.progressPercentage || 0)
+      Number(
+        progress?.progressPercentage || 0
+      )
     )
   );
 
@@ -125,8 +145,14 @@ function Dashboard() {
   );
 
   const lastLessonTitle =
-    progress?.lastLesson?.title ||
-    "";
+    progress?.lastLesson?.title || "";
+
+  const hasLastLesson =
+    Boolean(progress?.lastLesson);
+
+  const progressStyle = {
+    "--progress": `${progressPercentage * 3.6}`,
+  };
 
   return (
     <section className="dashboard-page">
@@ -154,79 +180,82 @@ function Dashboard() {
         </div>
       </div>
 
-      <section className="dashboard-resume-card">
-        <div className="dashboard-resume-content">
-          <div className="dashboard-resume-kicker">
-            YOUR LEARNING
-          </div>
+      {role === "STUDENT" && (
+        <section className="dashboard-resume-card">
+          <div className="dashboard-resume-content">
+            <div className="dashboard-resume-kicker">
+              YOUR LEARNING
+            </div>
 
-          <h2>
-            {progress?.lastLesson
-              ? "Continue where you left off"
-              : "Start your OJDV learning journey"}
-          </h2>
+            <h2>
+              {hasLastLesson
+                ? "Continue where you left off"
+                : "Start your OJDV learning journey"}
+            </h2>
 
-          <p>
-            {progress?.lastLesson
-              ? lastLessonTitle
-              : "Begin the UPSC Civil Services course and build your preparation step by step."}
-          </p>
+            <p>
+              {hasLastLesson
+                ? lastLessonTitle
+                : "Begin the UPSC Civil Services course and build your preparation step by step."}
+            </p>
 
-          <div className="dashboard-progress-meta">
-            <span>
-              {completedLessons} of{" "}
-              {totalLessons || "—"} lessons
-            </span>
+            <div className="dashboard-progress-meta">
+              <span>
+                {completedLessons} of{" "}
+                {totalLessons || "—"} lessons
+              </span>
 
-            <strong>
+              <strong>
+                {progressLoading
+                  ? "Loading..."
+                  : `${Math.round(
+                      progressPercentage
+                    )}% complete`}
+              </strong>
+            </div>
+
+            <div
+              className="dashboard-progress-track"
+              aria-label={`Course progress ${Math.round(
+                progressPercentage
+              )}%`}
+            >
+              <span
+                style={{
+                  width: `${progressPercentage}%`,
+                }}
+              />
+            </div>
+
+            <button
+              type="button"
+              className="dashboard-resume-button"
+              onClick={openResume}
+              disabled={progressLoading}
+            >
               {progressLoading
-                ? "Loading..."
-                : `${Math.round(
-                    progressPercentage
-                  )}% complete`}
-            </strong>
+                ? "Loading progress..."
+                : hasLastLesson
+                  ? "Resume Learning →"
+                  : "Begin Learning →"}
+            </button>
           </div>
 
           <div
-            className="dashboard-progress-track"
-            aria-label={`Course progress ${Math.round(
-              progressPercentage
-            )}%`}
+            className="dashboard-resume-visual"
+            style={progressStyle}
+            aria-hidden="true"
           >
-            <span
-              style={{
-                width: `${progressPercentage}%`,
-              }}
-            />
+            <span className="dashboard-resume-ring">
+              <strong>
+                {Math.round(
+                  progressPercentage
+                )}%
+              </strong>
+            </span>
           </div>
-
-          <button
-            type="button"
-            className="dashboard-resume-button"
-            onClick={openResume}
-            disabled={progressLoading}
-          >
-            {progressLoading
-              ? "Loading progress..."
-              : progress?.lastLesson
-                ? "Resume Learning →"
-                : "Begin Learning →"}
-          </button>
-        </div>
-
-        <div
-          className="dashboard-resume-visual"
-          aria-hidden="true"
-        >
-          <span className="dashboard-resume-ring">
-            <strong>
-              {Math.round(
-                progressPercentage
-              )}%
-            </strong>
-          </span>
-        </div>
-      </section>
+        </section>
+      )}
 
       <div className="dashboard-grid">
         <article
@@ -317,3 +346,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
