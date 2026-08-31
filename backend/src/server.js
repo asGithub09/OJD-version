@@ -40,6 +40,7 @@ const allowedOrigins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "https://ojd-version.vercel.app",
+    "https://ojd-version-jna4a6t6l-ojd.vercel.app",
   ];
 
 
@@ -366,3 +367,5 @@ const startServer = async () => {
 
 
 startServer();
+
+
