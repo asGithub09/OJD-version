@@ -22,6 +22,7 @@ const courseModuleRoutes = require("./routes/courseModuleRoutes");
 const courseLessonRoutes = require("./routes/courseLessonRoutes");
 const facultyRoutes = require("./routes/facultyRoutes");
 const mockTestRoutes = require("./routes/mockTestRoutes");
+const mockQuestionRoutes = require("./routes/mockQuestionRoutes");
 const studentCourseProgressRoutes = require(
   "./routes/studentCourseProgressRoutes"
 );
@@ -171,6 +172,17 @@ app.use(
   mockTestRoutes
 );
 
+
+
+/*
+ * Mock Test Questions
+ *
+ * /api/mock-tests/:mockTestId/questions
+ */
+app.use(
+  "/api/mock-tests",
+  mockQuestionRoutes
+);
 
 /*
  * Courses
@@ -380,6 +392,8 @@ const startServer = async () => {
 
 
 startServer();
+
+
 
 
 
