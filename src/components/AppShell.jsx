@@ -1,5 +1,6 @@
 ﻿import { useState } from "react";
 import { useAuth } from "../auth/AuthContext.jsx";
+import "./AppShell.css";
 
 const roleLabels = {
   STUDENT: "Student",
@@ -381,3 +382,5 @@ function AppShell({ children }) {
 }
 
 export default AppShell;
+
+
