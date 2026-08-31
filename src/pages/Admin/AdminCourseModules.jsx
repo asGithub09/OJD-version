@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 
 import AdminLayout from "./AdminLayout.jsx";
 import { useAuth } from "../../auth/AuthContext.jsx";
 
 import "./AdminCourseModules.css";
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = import.meta.env.PROD ? "https://ojd-version.onrender.com/api" : "http://127.0.0.1:5000/api";
 
 function AdminCourseModules({ courseId }) {
   const { token } = useAuth();
