@@ -1,31 +1,50 @@
-﻿:root {
+﻿@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap");
+
+:root {
   font-family:
-    Inter,
-    ui-sans-serif,
+    "DM Sans",
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
 
-  color: #26342f;
-  background: #ffffff;
+  color: #173b3a;
+  background: #eef8f5;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html,
-body,
-#root {
-  min-width: 100%;
-  min-height: 100%;
-  margin: 0;
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+  background: #eef8f5;
 }
 
 body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4fbf8 0%,
+      #eef8f5 42%,
+      #f4f1fb 100%
+    );
+
+  color: #173b3a;
+
+  overflow-x: hidden;
+}
+
+#root {
+  min-width: 100%;
   min-height: 100vh;
 }
 
@@ -34,6 +53,21 @@ body {
 }
 
 button,
-input {
-  font-family: inherit;
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(65, 191, 166, 0.24);
 }

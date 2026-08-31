@@ -783,3 +783,4301 @@
     font-size: 36px;
   }
 }
+/* ============================================================
+   OJDV ADMIN DASHBOARD — PREMIUM VISUAL SYSTEM
+   ============================================================
+
+   VISUAL ONLY.
+
+   Does NOT modify:
+   - API calls
+   - backend
+   - authentication
+   - routing
+   - React state
+   - approval workflow
+   - dashboard algorithms
+   ============================================================ */
+
+.admin-dashboard {
+  --ojdv-admin-bg: #f5f8f5;
+  --ojdv-admin-surface: rgba(255, 255, 255, 0.78);
+  --ojdv-admin-surface-strong: rgba(255, 255, 255, 0.94);
+  --ojdv-admin-border: rgba(43, 91, 73, 0.12);
+  --ojdv-admin-text: #17332a;
+  --ojdv-admin-muted: #6d7e76;
+  --ojdv-admin-green: #2f8069;
+  --ojdv-admin-green-soft: #dff2ea;
+  --ojdv-admin-coral: #df765c;
+  --ojdv-admin-coral-soft: #fae6df;
+  --ojdv-admin-lavender: #7774c8;
+  --ojdv-admin-lavender-soft: #e9e8fb;
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  padding-bottom: 3rem;
+
+  color: var(--ojdv-admin-text);
+
+  background:
+    radial-gradient(
+      circle at 8% 5%,
+      rgba(73, 153, 126, 0.16),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 94% 8%,
+      rgba(119, 116, 200, 0.13),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 78% 82%,
+      rgba(223, 118, 92, 0.10),
+      transparent 28%
+    ),
+    linear-gradient(
+      145deg,
+      #f5f8f5 0%,
+      #fbfcfa 48%,
+      #f3f7f4 100%
+    );
+
+  animation: ojdvAdminPageEnter 0.55s ease-out both;
+}
+
+.admin-dashboard::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(47, 128, 105, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(47, 128, 105, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 36px 36px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 0%,
+      rgba(0, 0, 0, 0.55) 42%,
+      transparent 82%
+    );
+
+  opacity: 0.8;
+}
+
+.admin-dashboard::after {
+  content: "";
+  position: fixed;
+  top: 10%;
+  right: 3%;
+  z-index: -1;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(119, 116, 200, 0.10),
+      transparent 68%
+    );
+
+  filter: blur(20px);
+}
+
+@keyframes ojdvAdminPageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.admin-dashboard > div:first-child {
+  position: relative;
+}
+
+.admin-dashboard h1,
+.admin-dashboard h2,
+.admin-dashboard h3 {
+  color: var(--ojdv-admin-text);
+  letter-spacing: -0.035em;
+}
+
+
+/* ============================================================
+   PREMIUM BUTTON SYSTEM
+   ============================================================ */
+
+.admin-dashboard button,
+.admin-dashboard a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.admin-dashboard button:not(:disabled),
+.admin-dashboard a {
+  transition:
+    transform 220ms cubic-bezier(.2,.8,.2,1),
+    box-shadow 220ms cubic-bezier(.2,.8,.2,1),
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.admin-dashboard button:not(:disabled):hover,
+.admin-dashboard a:hover {
+  transform: translateY(-2px);
+}
+
+.admin-dashboard button:not(:disabled):active,
+.admin-dashboard a:active {
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   TOP ACTIONS
+   ============================================================ */
+
+.admin-dashboard a[href="/app/admin/teachers"] {
+  background:
+    linear-gradient(
+      135deg,
+      #2f8069,
+      #41967b
+    ) !important;
+
+  box-shadow:
+    0 12px 26px rgba(47, 128, 105, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+
+  border: 1px solid rgba(47, 128, 105, 0.18);
+}
+
+.admin-dashboard a[href="/app/admin/teachers"]:hover {
+  box-shadow:
+    0 18px 34px rgba(47, 128, 105, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.admin-dashboard a[href="/app/admin/exams"] {
+  border-color: rgba(47, 128, 105, 0.14) !important;
+  background: rgba(255, 255, 255, 0.76) !important;
+  color: var(--ojdv-admin-text) !important;
+  box-shadow:
+    0 8px 24px rgba(35, 65, 54, 0.05);
+}
+
+
+/* ============================================================
+   WELCOME HERO
+   ============================================================ */
+
+.admin-dashboard section.rounded-3xl {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 88% 20%,
+      rgba(255, 255, 255, 0.22),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 15% 100%,
+      rgba(255, 255, 255, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #2f8069 0%,
+      #398e73 46%,
+      #7774c8 100%
+    ) !important;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.28) !important;
+
+  box-shadow:
+    0 28px 70px rgba(47, 128, 105, 0.18),
+    0 10px 28px rgba(49, 70, 62, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+
+  transform:
+    perspective(1200px)
+    translateZ(0);
+
+  transition:
+    transform 350ms cubic-bezier(.2,.8,.2,1),
+    box-shadow 350ms ease;
+}
+
+.admin-dashboard section.rounded-3xl:hover {
+  transform:
+    perspective(1200px)
+    translateY(-3px)
+    rotateX(0.6deg);
+
+  box-shadow:
+    0 34px 82px rgba(47, 128, 105, 0.21),
+    0 14px 32px rgba(49, 70, 62, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.admin-dashboard section.rounded-3xl h2,
+.admin-dashboard section.rounded-3xl p,
+.admin-dashboard section.rounded-3xl a {
+  color: white !important;
+}
+
+.admin-dashboard section.rounded-3xl a {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+
+/* ============================================================
+   KPI CARDS
+   ============================================================ */
+
+.admin-dashboard .grid.sm\:grid-cols-2.xl\:grid-cols-5 {
+  perspective: 1400px;
+}
+
+.admin-dashboard .grid.sm\:grid-cols-2.xl\:grid-cols-5 > * {
+  position: relative;
+
+  border:
+    1px solid var(--ojdv-admin-border) !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(247, 251, 248, 0.76)
+    ) !important;
+
+  box-shadow:
+    0 12px 30px rgba(38, 66, 55, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+  border-radius: 20px !important;
+
+  transform:
+    perspective(900px)
+    translateZ(0);
+
+  transition:
+    transform 260ms cubic-bezier(.2,.8,.2,1),
+    box-shadow 260ms ease,
+    border-color 260ms ease;
+}
+
+.admin-dashboard .grid.sm\:grid-cols-2.xl\:grid-cols-5 > *::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -18px;
+  height: 26px;
+  border-radius: 50%;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(47, 128, 105, 0.13),
+      transparent 70%
+    );
+
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+.admin-dashboard .grid.sm\:grid-cols-2.xl\:grid-cols-5 > *:hover {
+  transform:
+    perspective(900px)
+    translateY(-7px)
+    rotateX(1.2deg)
+    rotateY(-0.7deg);
+
+  border-color:
+    rgba(47, 128, 105, 0.20) !important;
+
+  box-shadow:
+    0 24px 48px rgba(38, 66, 55, 0.10),
+    0 4px 12px rgba(47, 128, 105, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.admin-dashboard .grid.sm\:grid-cols-2.xl\:grid-cols-5 > *:hover::after {
+  opacity: 1;
+}
+
+
+/* ============================================================
+   KPI ICON COLORS
+   ============================================================ */
+
+.admin-dashboard .bg-blue-50 {
+  background: var(--ojdv-admin-green-soft) !important;
+}
+
+.admin-dashboard .text-blue-600 {
+  color: var(--ojdv-admin-green) !important;
+}
+
+.admin-dashboard .bg-violet-50 {
+  background: var(--ojdv-admin-lavender-soft) !important;
+}
+
+.admin-dashboard .text-violet-600 {
+  color: var(--ojdv-admin-lavender) !important;
+}
+
+.admin-dashboard .bg-amber-50 {
+  background: var(--ojdv-admin-coral-soft) !important;
+}
+
+.admin-dashboard .text-amber-600 {
+  color: var(--ojdv-admin-coral) !important;
+}
+
+.admin-dashboard .bg-indigo-50 {
+  background: var(--ojdv-admin-green-soft) !important;
+}
+
+.admin-dashboard .text-indigo-600 {
+  color: var(--ojdv-admin-green) !important;
+}
+
+.admin-dashboard .text-indigo-700 {
+  color: #276d5a !important;
+}
+
+
+/* ============================================================
+   APPROVAL CENTERS
+   ============================================================ */
+
+.admin-dashboard section.rounded-2xl {
+  position: relative;
+
+  border-color:
+    var(--ojdv-admin-border) !important;
+
+  background:
+    var(--ojdv-admin-surface) !important;
+
+  box-shadow:
+    0 16px 40px rgba(38, 66, 55, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  transition:
+    transform 260ms cubic-bezier(.2,.8,.2,1),
+    box-shadow 260ms ease,
+    border-color 260ms ease;
+}
+
+.admin-dashboard section.rounded-2xl:hover {
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(47, 128, 105, 0.18) !important;
+
+  box-shadow:
+    0 24px 54px rgba(38, 66, 55, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+
+/* ============================================================
+   APPROVAL ROWS
+   ============================================================ */
+
+.admin-dashboard .divide-y > * {
+  border-color:
+    rgba(43, 91, 73, 0.08) !important;
+
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.admin-dashboard .divide-y > *:hover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(223, 242, 234, 0.46),
+      rgba(255, 255, 255, 0.18)
+    );
+
+  transform: translateX(2px);
+}
+
+
+/* ============================================================
+   WHITE TAILWIND PANELS
+   ============================================================ */
+
+.admin-dashboard .bg-white {
+  background:
+    rgba(255, 255, 255, 0.82) !important;
+}
+
+.admin-dashboard .border-slate-200 {
+  border-color:
+    rgba(43, 91, 73, 0.11) !important;
+}
+
+.admin-dashboard .border-slate-100 {
+  border-color:
+    rgba(43, 91, 73, 0.08) !important;
+}
+
+.admin-dashboard .divide-slate-100 > * {
+  border-color:
+    rgba(43, 91, 73, 0.08) !important;
+}
+
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+.admin-dashboard .text-slate-900 {
+  color: #17332a !important;
+}
+
+.admin-dashboard .text-slate-800 {
+  color: #234238 !important;
+}
+
+.admin-dashboard .text-slate-700 {
+  color: #39574c !important;
+}
+
+.admin-dashboard .text-slate-600 {
+  color: #536c62 !important;
+}
+
+.admin-dashboard .text-slate-500 {
+  color: #6d7e76 !important;
+}
+
+.admin-dashboard .text-slate-400 {
+  color: #87978f !important;
+}
+
+
+/* ============================================================
+   SOFT SHADOW NORMALIZATION
+   ============================================================ */
+
+.admin-dashboard .shadow-sm {
+  box-shadow:
+    0 10px 26px rgba(38, 66, 55, 0.045) !important;
+}
+
+.admin-dashboard .shadow-lg {
+  box-shadow:
+    0 22px 55px rgba(38, 66, 55, 0.11) !important;
+}
+
+
+/* ============================================================
+   LOADING / EMPTY STATES
+   ============================================================ */
+
+.admin-dashboard [class*="animate-spin"] {
+  color: var(--ojdv-admin-green);
+}
+
+.admin-dashboard .animate-pulse {
+  border-radius: 14px;
+}
+
+
+/* ============================================================
+   FOCUS STATES
+   ============================================================ */
+
+.admin-dashboard button:focus-visible,
+.admin-dashboard a:focus-visible,
+.admin-dashboard input:focus-visible,
+.admin-dashboard textarea:focus-visible {
+  outline: none !important;
+
+  box-shadow:
+    0 0 0 3px rgba(47, 128, 105, 0.13),
+    0 0 0 5px rgba(255, 255, 255, 0.95) !important;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .admin-dashboard {
+    padding-bottom: 2rem;
+  }
+
+  .admin-dashboard section.rounded-3xl {
+    border-radius: 24px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-dashboard {
+    padding-bottom: 1.5rem;
+  }
+
+  .admin-dashboard section.rounded-3xl {
+    border-radius: 20px !important;
+  }
+
+  .admin-dashboard section.rounded-2xl {
+    border-radius: 18px !important;
+  }
+
+  .admin-dashboard .grid.sm\:grid-cols-2.xl\:grid-cols-5 > *:hover,
+  .admin-dashboard section.rounded-3xl:hover,
+  .admin-dashboard section.rounded-2xl:hover {
+    transform: none;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-dashboard,
+  .admin-dashboard *,
+  .admin-dashboard section,
+  .admin-dashboard button,
+  .admin-dashboard a {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .admin-dashboard .grid.sm\:grid-cols-2.xl\:grid-cols-5 > *:hover,
+  .admin-dashboard section.rounded-3xl:hover,
+  .admin-dashboard section.rounded-2xl:hover {
+    transform: none !important;
+  }
+}
+
+
+/* ============================================================
+   OJDV ADMIN — FINAL BRAND ALIGNMENT
+   Matches the PUBLIC OJDV LANDING PAGE
+   Orange + Green + Warm White
+   ============================================================ */
+
+.admin-dashboard {
+  --ojdv-orange: #f47a20;
+  --ojdv-orange-soft: #fff0e4;
+
+  --ojdv-green: #159b61;
+  --ojdv-green-soft: #e9f8f0;
+
+  --ojdv-bg: #fffdf9;
+  --ojdv-surface: rgba(255, 255, 255, 0.72);
+  --ojdv-surface-strong: rgba(255, 255, 255, 0.88);
+
+  --ojdv-text: #17352a;
+  --ojdv-text-soft: #587267;
+  --ojdv-muted: #789087;
+
+  --ojdv-border: rgba(23, 53, 42, 0.09);
+
+  --ojdv-shadow:
+    0 24px 70px rgba(25, 93, 63, 0.10);
+
+  color: var(--ojdv-text);
+
+  background:
+    radial-gradient(
+      circle at 7% 8%,
+      rgba(244, 122, 32, 0.10),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 93% 12%,
+      rgba(21, 155, 97, 0.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 78% 85%,
+      rgba(244, 122, 32, 0.055),
+      transparent 25%
+    ),
+    linear-gradient(
+      180deg,
+      #fffdf9 0%,
+      #ffffff 52%,
+      #f7fcf9 100%
+    );
+}
+
+
+/* ============================================================
+   REMOVE OLD BLUE / PURPLE VISUAL LANGUAGE
+   ============================================================ */
+
+.admin-dashboard .bg-blue-50,
+.admin-dashboard .bg-blue-100 {
+  background: var(--ojdv-green-soft) !important;
+}
+
+.admin-dashboard .text-blue-500,
+.admin-dashboard .text-blue-600,
+.admin-dashboard .text-blue-700 {
+  color: var(--ojdv-green) !important;
+}
+
+.admin-dashboard .bg-violet-50,
+.admin-dashboard .bg-violet-100 {
+  background: var(--ojdv-orange-soft) !important;
+}
+
+.admin-dashboard .text-violet-500,
+.admin-dashboard .text-violet-600,
+.admin-dashboard .text-violet-700 {
+  color: var(--ojdv-orange) !important;
+}
+
+.admin-dashboard .bg-indigo-50,
+.admin-dashboard .bg-indigo-100 {
+  background: var(--ojdv-green-soft) !important;
+}
+
+.admin-dashboard .text-indigo-500,
+.admin-dashboard .text-indigo-600,
+.admin-dashboard .text-indigo-700 {
+  color: var(--ojdv-green) !important;
+}
+
+
+/* ============================================================
+   MAIN TYPOGRAPHY
+   ============================================================ */
+
+.admin-dashboard h1,
+.admin-dashboard h2,
+.admin-dashboard h3,
+.admin-dashboard h4 {
+  color: var(--ojdv-text) !important;
+}
+
+.admin-dashboard .text-slate-900 {
+  color: #17352a !important;
+}
+
+.admin-dashboard .text-slate-800 {
+  color: #244438 !important;
+}
+
+.admin-dashboard .text-slate-700 {
+  color: #315b4a !important;
+}
+
+.admin-dashboard .text-slate-600 {
+  color: #587267 !important;
+}
+
+.admin-dashboard .text-slate-500 {
+  color: #789087 !important;
+}
+
+.admin-dashboard .text-slate-400 {
+  color: #91a39b !important;
+}
+
+
+/* ============================================================
+   DASHBOARD HEADER
+   ============================================================ */
+
+.admin-dashboard > div:first-child {
+  position: relative;
+}
+
+
+/* ============================================================
+   PRIMARY ADMIN ACTION
+   ============================================================ */
+
+.admin-dashboard a[href="/app/admin/teachers"] {
+  background:
+    linear-gradient(
+      135deg,
+      #f47a20,
+      #f28b39
+    ) !important;
+
+  border:
+    1px solid rgba(244, 122, 32, 0.18) !important;
+
+  color: #ffffff !important;
+
+  box-shadow:
+    0 14px 32px rgba(244, 122, 32, 0.20) !important;
+}
+
+.admin-dashboard a[href="/app/admin/teachers"]:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #f47a20,
+      #ed6a16
+    ) !important;
+
+  box-shadow:
+    0 18px 38px rgba(244, 122, 32, 0.24) !important;
+}
+
+
+/* ============================================================
+   SECONDARY ACTION
+   ============================================================ */
+
+.admin-dashboard a[href="/app/admin/exams"] {
+  background:
+    rgba(255, 255, 255, 0.68) !important;
+
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  color:
+    #315b4a !important;
+
+  box-shadow:
+    0 10px 28px rgba(25, 93, 63, 0.06) !important;
+}
+
+.admin-dashboard a[href="/app/admin/exams"]:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #fff0e4,
+      #fff8ed
+    ) !important;
+
+  border-color:
+    rgba(244, 122, 32, 0.18) !important;
+}
+
+
+/* ============================================================
+   WELCOME HERO
+   SAME LANGUAGE AS LANDING PAGE
+   ============================================================ */
+
+.admin-dashboard section.rounded-3xl {
+  background:
+    radial-gradient(
+      circle at 85% 18%,
+      rgba(255, 255, 255, 0.22),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 18% 100%,
+      rgba(255, 255, 255, 0.14),
+      transparent 28%
+    ),
+    linear-gradient(
+      125deg,
+      #f47a20 0%,
+      #f28b39 42%,
+      #159b61 100%
+    ) !important;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.30) !important;
+
+  box-shadow:
+    0 24px 70px rgba(25, 93, 63, 0.13),
+    0 14px 32px rgba(244, 122, 32, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24) !important;
+}
+
+.admin-dashboard section.rounded-3xl:hover {
+  box-shadow:
+    0 30px 82px rgba(25, 93, 63, 0.16),
+    0 18px 38px rgba(244, 122, 32, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+}
+
+.admin-dashboard section.rounded-3xl h2,
+.admin-dashboard section.rounded-3xl p,
+.admin-dashboard section.rounded-3xl a {
+  color: #ffffff !important;
+}
+
+.admin-dashboard section.rounded-3xl a {
+  background:
+    rgba(255, 255, 255, 0.16) !important;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.28) !important;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.admin-dashboard section.rounded-3xl a:hover {
+  background:
+    rgba(255, 255, 255, 0.25) !important;
+}
+
+
+/* ============================================================
+   KPI CARDS
+   ============================================================ */
+
+.admin-dashboard .grid.sm\:grid-cols-2.xl\:grid-cols-5 > * {
+  position: relative;
+
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  border-radius: 24px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.88),
+      rgba(255, 255, 255, 0.62)
+    ) !important;
+
+  box-shadow:
+    0 17px 42px rgba(8, 122, 75, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.90) !important;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.admin-dashboard .grid.sm\:grid-cols-2.xl\:grid-cols-5 > *:hover {
+  transform: translateY(-5px);
+
+  border-color:
+    rgba(21, 155, 97, 0.18) !important;
+
+  box-shadow:
+    0 24px 52px rgba(8, 122, 75, 0.10),
+    0 8px 22px rgba(244, 122, 32, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+
+/* ============================================================
+   KPI ICONS — ONLY OJDV COLORS
+   ============================================================ */
+
+.admin-dashboard .bg-blue-50,
+.admin-dashboard .bg-indigo-50 {
+  background:
+    linear-gradient(
+      135deg,
+      #e9f8f0,
+      #f2fbf6
+    ) !important;
+}
+
+.admin-dashboard .text-blue-600,
+.admin-dashboard .text-indigo-600 {
+  color:
+    #159b61 !important;
+}
+
+.admin-dashboard .bg-violet-50 {
+  background:
+    linear-gradient(
+      135deg,
+      #fff0e4,
+      #fff8ed
+    ) !important;
+}
+
+.admin-dashboard .text-violet-600 {
+  color:
+    #f47a20 !important;
+}
+
+.admin-dashboard .bg-amber-50 {
+  background:
+    linear-gradient(
+      135deg,
+      #fff0e4,
+      #fff8ed
+    ) !important;
+}
+
+.admin-dashboard .text-amber-600 {
+  color:
+    #f47a20 !important;
+}
+
+
+/* ============================================================
+   MAIN GLASS PANELS
+   ============================================================ */
+
+.admin-dashboard section.rounded-2xl {
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  background:
+    rgba(255, 255, 255, 0.72) !important;
+
+  box-shadow:
+    0 17px 42px rgba(8, 122, 75, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.admin-dashboard section.rounded-2xl:hover {
+  border-color:
+    rgba(21, 155, 97, 0.15) !important;
+
+  box-shadow:
+    0 22px 50px rgba(8, 122, 75, 0.085),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92) !important;
+}
+
+
+/* ============================================================
+   APPROVAL SECTION HEADERS
+   ============================================================ */
+
+.admin-dashboard .divide-slate-100 > * {
+  border-color:
+    rgba(23, 53, 42, 0.07) !important;
+}
+
+.admin-dashboard .divide-y > * {
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.admin-dashboard .divide-y > *:hover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(233, 248, 240, 0.58),
+      rgba(255, 255, 255, 0.28)
+    );
+}
+
+
+/* ============================================================
+   ALL WHITE PANELS
+   ============================================================ */
+
+.admin-dashboard .bg-white {
+  background:
+    rgba(255, 255, 255, 0.76) !important;
+}
+
+.admin-dashboard .border-slate-200 {
+  border-color:
+    var(--ojdv-border) !important;
+}
+
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+
+.admin-dashboard a.text-indigo-600,
+.admin-dashboard a.text-indigo-700 {
+  color:
+    #159b61 !important;
+}
+
+.admin-dashboard a.text-indigo-600:hover,
+.admin-dashboard a.text-indigo-700:hover {
+  color:
+    #087a4b !important;
+}
+
+
+/* ============================================================
+   REFRESH / NEUTRAL BUTTON
+   ============================================================ */
+
+.admin-dashboard button {
+  border-color:
+    var(--ojdv-border);
+}
+
+.admin-dashboard button:hover {
+  border-color:
+    rgba(21, 155, 97, 0.18);
+}
+
+.admin-dashboard button:focus-visible,
+.admin-dashboard a:focus-visible {
+  outline: none !important;
+
+  box-shadow:
+    0 0 0 3px rgba(21, 155, 97, 0.13),
+    0 0 0 5px rgba(255, 255, 255, 0.90) !important;
+}
+
+
+/* ============================================================
+   LOADING
+   ============================================================ */
+
+.admin-dashboard .animate-spin {
+  color:
+    #159b61;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .admin-dashboard section.rounded-3xl {
+    border-radius: 20px !important;
+  }
+
+  .admin-dashboard section.rounded-2xl {
+    border-radius: 20px !important;
+  }
+
+  .admin-dashboard .grid.sm\:grid-cols-2.xl\:grid-cols-5 > *:hover,
+  .admin-dashboard section.rounded-3xl:hover,
+  .admin-dashboard section.rounded-2xl:hover {
+    transform: none;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-dashboard,
+  .admin-dashboard *,
+  .admin-dashboard button,
+  .admin-dashboard a,
+  .admin-dashboard section {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ============================================================
+   OJDV ADMIN DASHBOARD
+   FINAL LIGHT PREMIUM VISUAL SYSTEM
+   Matches OJDV Public Landing Page
+
+   IMPORTANT:
+   VISUAL ONLY.
+   NO APPLICATION LOGIC IS MODIFIED.
+   ============================================================ */
+
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+
+:root {
+
+  --ojdv-orange:
+    #f47a20;
+
+  --ojdv-orange-deep:
+    #ed6a16;
+
+  --ojdv-orange-soft:
+    #fff0e4;
+
+  --ojdv-green:
+    #159b61;
+
+  --ojdv-green-deep:
+    #087a4b;
+
+  --ojdv-green-soft:
+    #e9f8f0;
+
+  --ojdv-warm:
+    #fffdf9;
+
+  --ojdv-white:
+    #ffffff;
+
+  --ojdv-text:
+    #17352a;
+
+  --ojdv-text-soft:
+    #587267;
+
+  --ojdv-muted:
+    #789087;
+
+  --ojdv-border:
+    rgba(23, 53, 42, 0.09);
+
+  --ojdv-shadow:
+    0 24px 70px rgba(25, 93, 63, 0.10);
+
+}
+
+
+/* ============================================================
+   ADMIN APPLICATION CANVAS
+   ============================================================ */
+
+.admin-dashboard {
+
+  min-height:
+    100vh;
+
+  color:
+    var(--ojdv-text) !important;
+
+  background:
+
+    radial-gradient(
+      circle at 8% 8%,
+      rgba(244, 122, 32, 0.10),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 94% 12%,
+      rgba(21, 155, 97, 0.11),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 76% 82%,
+      rgba(244, 122, 32, 0.055),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      180deg,
+      #fffdf9 0%,
+      #ffffff 52%,
+      #f7fcf9 100%
+    ) !important;
+
+}
+
+
+/* ============================================================
+   ADMIN SIDEBAR
+   ============================================================ */
+
+.admin-sidebar {
+
+  background:
+
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(247, 252, 249, 0.92)
+    ) !important;
+
+  border-right:
+    1px solid var(--ojdv-border) !important;
+
+  box-shadow:
+    18px 0 50px rgba(25, 93, 63, 0.055) !important;
+
+  backdrop-filter:
+    blur(24px) !important;
+
+  -webkit-backdrop-filter:
+    blur(24px) !important;
+
+}
+
+
+/* Remove old dark sidebar glow */
+
+.admin-sidebar::before {
+
+  background:
+
+    radial-gradient(
+      circle,
+      rgba(21, 155, 97, 0.10),
+      transparent 65%
+    ) !important;
+
+  filter:
+    blur(65px) !important;
+
+}
+
+
+/* ============================================================
+   SIDEBAR BRAND
+   ============================================================ */
+
+.admin-sidebar,
+.admin-sidebar * {
+
+  color:
+    var(--ojdv-text);
+
+}
+
+
+.admin-sidebar .admin-brand {
+
+  color:
+    var(--ojdv-text) !important;
+
+}
+
+
+.admin-sidebar small,
+.admin-sidebar .admin-brand-subtitle {
+
+  color:
+    var(--ojdv-muted) !important;
+
+}
+
+
+/* ============================================================
+   SIDEBAR SECTION LABELS
+   ============================================================ */
+
+.admin-sidebar .admin-nav-section-title {
+
+  color:
+    var(--ojdv-muted) !important;
+
+  letter-spacing:
+    0.14em;
+
+}
+
+
+/* ============================================================
+   SIDEBAR NAVIGATION
+   ============================================================ */
+
+.admin-nav-item {
+
+  color:
+    #587267 !important;
+
+  border:
+    1px solid transparent !important;
+
+  background:
+    transparent !important;
+
+  border-radius:
+    14px !important;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease !important;
+
+}
+
+
+.admin-nav-item:hover {
+
+  color:
+    var(--ojdv-green-deep) !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(233, 248, 240, 0.75),
+      rgba(255, 255, 255, 0.55)
+    ) !important;
+
+  border-color:
+    rgba(21, 155, 97, 0.10) !important;
+
+  transform:
+    translateX(2px);
+
+}
+
+
+/* ============================================================
+   ACTIVE SIDEBAR ITEM
+   ============================================================ */
+
+.admin-nav-item-active {
+
+  color:
+    #ffffff !important;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #f47a20,
+      #159b61
+    ) !important;
+
+  border:
+    1px solid rgba(244, 122, 32, 0.16) !important;
+
+  box-shadow:
+
+    0 12px 30px
+      rgba(244, 122, 32, 0.16),
+
+    0 8px 22px
+      rgba(21, 155, 97, 0.10) !important;
+
+}
+
+
+.admin-nav-item-active *,
+.admin-nav-item-active span,
+.admin-nav-item-active svg {
+
+  color:
+    #ffffff !important;
+
+}
+
+
+/* Remove old crimson active indicator */
+
+.admin-nav-item-active::before {
+
+  background:
+    rgba(255, 255, 255, 0.92) !important;
+
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.42) !important;
+
+}
+
+
+/* ============================================================
+   ADMIN TOP BAR
+   ============================================================ */
+
+.admin-topbar {
+
+  background:
+    rgba(255, 255, 255, 0.78) !important;
+
+  border-bottom:
+    1px solid var(--ojdv-border) !important;
+
+  box-shadow:
+    0 10px 30px rgba(25, 93, 63, 0.035) !important;
+
+  backdrop-filter:
+    blur(22px) !important;
+
+  -webkit-backdrop-filter:
+    blur(22px) !important;
+
+}
+
+
+/* ============================================================
+   TOP BAR TEXT
+   ============================================================ */
+
+.admin-topbar,
+.admin-topbar * {
+
+  color:
+    var(--ojdv-text);
+
+}
+
+
+.admin-topbar small {
+
+  color:
+    var(--ojdv-muted) !important;
+
+}
+
+
+/* ============================================================
+   ONLINE STATUS
+   ============================================================ */
+
+.admin-status-dot {
+
+  background:
+    var(--ojdv-green) !important;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(21, 155, 97, 0.10) !important;
+
+}
+
+
+/* ============================================================
+   ADMIN AVATAR
+   ============================================================ */
+
+.admin-avatar {
+
+  background:
+
+    linear-gradient(
+      135deg,
+      var(--ojdv-orange),
+      var(--ojdv-green)
+    ) !important;
+
+  color:
+    #ffffff !important;
+
+  box-shadow:
+    0 10px 25px
+    rgba(244, 122, 32, 0.18) !important;
+
+}
+
+
+/* ============================================================
+   LOGOUT / TOP ACTION
+   ============================================================ */
+
+.admin-topbar button {
+
+  background:
+    rgba(255, 255, 255, 0.72) !important;
+
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  color:
+    var(--ojdv-text-soft) !important;
+
+  border-radius:
+    12px !important;
+
+}
+
+
+.admin-topbar button:hover {
+
+  background:
+    var(--ojdv-orange-soft) !important;
+
+  border-color:
+    rgba(244, 122, 32, 0.18) !important;
+
+  color:
+    var(--ojdv-orange-deep) !important;
+
+}
+
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+
+.admin-main,
+.admin-content {
+
+  background:
+    transparent !important;
+
+}
+
+
+/* ============================================================
+   ADMIN PAGE HEADER
+   ============================================================ */
+
+.admin-dashboard h1 {
+
+  color:
+    var(--ojdv-text) !important;
+
+  letter-spacing:
+    -0.045em;
+
+}
+
+
+.admin-dashboard h2,
+.admin-dashboard h3 {
+
+  color:
+    var(--ojdv-text) !important;
+
+}
+
+
+.admin-dashboard p {
+
+  color:
+    var(--ojdv-text-soft);
+
+}
+
+
+/* ============================================================
+   EYEBROWS / LABELS
+   ============================================================ */
+
+.admin-dashboard .eyebrow,
+.admin-dashboard .section-eyebrow {
+
+  color:
+    var(--ojdv-green) !important;
+
+  letter-spacing:
+    0.16em;
+
+}
+
+
+/* ============================================================
+   ADMIN STAT CARDS
+   ============================================================ */
+
+.admin-stat-card {
+
+  position:
+    relative;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  border-radius:
+    24px !important;
+
+  background:
+
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.90),
+      rgba(255, 255, 255, 0.64)
+    ) !important;
+
+  box-shadow:
+
+    0 17px 42px
+      rgba(8, 122, 75, 0.075),
+
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.90) !important;
+
+  backdrop-filter:
+    blur(18px) !important;
+
+  -webkit-backdrop-filter:
+    blur(18px) !important;
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease !important;
+
+}
+
+
+.admin-stat-card:hover {
+
+  transform:
+    translateY(-5px);
+
+  border-color:
+    rgba(21, 155, 97, 0.18) !important;
+
+  box-shadow:
+
+    0 25px 55px
+      rgba(8, 122, 75, 0.10),
+
+    0 10px 24px
+      rgba(244, 122, 32, 0.045),
+
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.95) !important;
+
+}
+
+
+/* Remove old purple card glow */
+
+.admin-stat-card::after {
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(21, 155, 97, 0.09),
+      transparent 68%
+    ) !important;
+
+  filter:
+    blur(25px) !important;
+
+}
+
+
+/* ============================================================
+   STAT ICONS
+   ============================================================ */
+
+.admin-stat-card svg {
+
+  color:
+    var(--ojdv-green) !important;
+
+}
+
+
+.admin-stat-card .icon {
+
+  background:
+    var(--ojdv-green-soft) !important;
+
+  color:
+    var(--ojdv-green) !important;
+
+  border:
+    1px solid rgba(21, 155, 97, 0.10) !important;
+
+}
+
+
+/* ============================================================
+   STAT NUMBERS
+   ============================================================ */
+
+.admin-stat-card strong,
+.admin-stat-card .stat-value {
+
+  color:
+    var(--ojdv-text) !important;
+
+}
+
+
+/* ============================================================
+   DASHBOARD PANELS
+   ============================================================ */
+
+.admin-dashboard .admin-panel {
+
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  border-radius:
+    24px !important;
+
+  background:
+
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.88),
+      rgba(255, 255, 255, 0.66)
+    ) !important;
+
+  box-shadow:
+
+    0 17px 42px
+      rgba(8, 122, 75, 0.065),
+
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.90) !important;
+
+  backdrop-filter:
+    blur(16px) !important;
+
+  -webkit-backdrop-filter:
+    blur(16px) !important;
+
+}
+
+
+/* ============================================================
+   GENERIC WHITE DASHBOARD CARDS
+   ============================================================ */
+
+.admin-dashboard .rounded-2xl.border,
+.admin-dashboard .rounded-3xl.border {
+
+  border-color:
+    var(--ojdv-border) !important;
+
+}
+
+
+.admin-dashboard .bg-white {
+
+  background:
+    rgba(255, 255, 255, 0.76) !important;
+
+}
+
+
+/* ============================================================
+   OLD TAILWIND BLUE → OJDV GREEN
+   ============================================================ */
+
+.admin-dashboard .text-blue-500,
+.admin-dashboard .text-blue-600,
+.admin-dashboard .text-blue-700,
+.admin-dashboard .text-indigo-500,
+.admin-dashboard .text-indigo-600,
+.admin-dashboard .text-indigo-700 {
+
+  color:
+    var(--ojdv-green) !important;
+
+}
+
+
+.admin-dashboard .bg-blue-50,
+.admin-dashboard .bg-blue-100,
+.admin-dashboard .bg-indigo-50,
+.admin-dashboard .bg-indigo-100 {
+
+  background:
+    var(--ojdv-green-soft) !important;
+
+}
+
+
+/* ============================================================
+   OLD PURPLE → OJDV ORANGE
+   ============================================================ */
+
+.admin-dashboard .text-violet-500,
+.admin-dashboard .text-violet-600,
+.admin-dashboard .text-violet-700 {
+
+  color:
+    var(--ojdv-orange) !important;
+
+}
+
+
+.admin-dashboard .bg-violet-50,
+.admin-dashboard .bg-violet-100 {
+
+  background:
+    var(--ojdv-orange-soft) !important;
+
+}
+
+
+/* ============================================================
+   OLD CRIMSON / ROSE → ORANGE
+   ============================================================ */
+
+.admin-dashboard .text-rose-500,
+.admin-dashboard .text-rose-600,
+.admin-dashboard .text-rose-700,
+.admin-dashboard .text-red-500,
+.admin-dashboard .text-red-600,
+.admin-dashboard .text-red-700 {
+
+  color:
+    var(--ojdv-orange-deep) !important;
+
+}
+
+
+.admin-dashboard .bg-rose-50,
+.admin-dashboard .bg-rose-100,
+.admin-dashboard .bg-red-50,
+.admin-dashboard .bg-red-100 {
+
+  background:
+    var(--ojdv-orange-soft) !important;
+
+}
+
+
+/* ============================================================
+   PRIMARY ADMIN BUTTONS
+   ============================================================ */
+
+.admin-dashboard button.bg-indigo-600,
+.admin-dashboard a.bg-indigo-600,
+.admin-dashboard button.bg-blue-600,
+.admin-dashboard a.bg-blue-600 {
+
+  background:
+
+    linear-gradient(
+      135deg,
+      var(--ojdv-orange),
+      #f28b39
+    ) !important;
+
+  border-color:
+    rgba(244, 122, 32, 0.18) !important;
+
+  color:
+    #ffffff !important;
+
+  box-shadow:
+    0 12px 30px
+    rgba(244, 122, 32, 0.18) !important;
+
+}
+
+
+.admin-dashboard button.bg-indigo-600:hover,
+.admin-dashboard a.bg-indigo-600:hover,
+.admin-dashboard button.bg-blue-600:hover,
+.admin-dashboard a.bg-blue-600:hover {
+
+  background:
+
+    linear-gradient(
+      135deg,
+      var(--ojdv-orange-deep),
+      var(--ojdv-green)
+    ) !important;
+
+  transform:
+    translateY(-2px);
+
+}
+
+
+/* ============================================================
+   GREEN ACTIONS
+   ============================================================ */
+
+.admin-dashboard button.bg-emerald-600,
+.admin-dashboard button.bg-green-600 {
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--ojdv-green),
+      #20aa72
+    ) !important;
+
+  color:
+    #ffffff !important;
+
+  box-shadow:
+    0 12px 28px
+    rgba(21, 155, 97, 0.18) !important;
+
+}
+
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+
+.admin-dashboard table {
+
+  color:
+    var(--ojdv-text) !important;
+
+}
+
+
+.admin-dashboard thead {
+
+  background:
+    rgba(233, 248, 240, 0.58) !important;
+
+}
+
+
+.admin-dashboard th {
+
+  color:
+    var(--ojdv-text-soft) !important;
+
+  border-color:
+    var(--ojdv-border) !important;
+
+}
+
+
+.admin-dashboard td {
+
+  color:
+    var(--ojdv-text-soft) !important;
+
+  border-color:
+    rgba(23, 53, 42, 0.065) !important;
+
+}
+
+
+.admin-dashboard tbody tr {
+
+  transition:
+    background 180ms ease !important;
+
+}
+
+
+.admin-dashboard tbody tr:hover {
+
+  background:
+    rgba(233, 248, 240, 0.42) !important;
+
+}
+
+
+/* ============================================================
+   APPROVAL / STATUS BADGES
+   ============================================================ */
+
+.admin-dashboard .rounded-full {
+
+  border-color:
+    rgba(21, 155, 97, 0.10);
+
+}
+
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+.admin-dashboard input,
+.admin-dashboard textarea,
+.admin-dashboard select {
+
+  color:
+    var(--ojdv-text) !important;
+
+  background:
+    rgba(255, 255, 255, 0.78) !important;
+
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  border-radius:
+    12px !important;
+
+}
+
+
+.admin-dashboard input:focus,
+.admin-dashboard textarea:focus,
+.admin-dashboard select:focus {
+
+  outline:
+    none !important;
+
+  border-color:
+    rgba(21, 155, 97, 0.28) !important;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(21, 155, 97, 0.08) !important;
+
+}
+
+
+/* ============================================================
+   DASHBOARD EMPTY STATES
+   ============================================================ */
+
+.admin-dashboard .empty-state {
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.76),
+      rgba(233, 248, 240, 0.44)
+    ) !important;
+
+  border-color:
+    var(--ojdv-border) !important;
+
+}
+
+
+.admin-dashboard .empty-state svg {
+
+  color:
+    var(--ojdv-green) !important;
+
+}
+
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+html {
+
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    #159b61 #f1f8f4;
+
+}
+
+
+::-webkit-scrollbar {
+
+  width:
+    9px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+  background:
+    #f1f8f4;
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+  border-radius:
+    999px;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #f47a20,
+      #159b61
+    );
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #ed6a16,
+      #087a4b
+    );
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .admin-sidebar {
+
+    box-shadow:
+      20px 0 55px
+      rgba(25, 93, 63, 0.12) !important;
+
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .admin-stat-card:hover {
+
+    transform:
+      none;
+
+  }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .admin-dashboard *,
+  .admin-sidebar *,
+  .admin-topbar *,
+  .admin-stat-card {
+
+    animation:
+      none !important;
+
+    transition:
+      none !important;
+
+  }
+
+}
+
+
+/* ============================================================
+   OJDV ADMIN DASHBOARD
+   FINAL LIGHT PREMIUM VISUAL SYSTEM
+   Matches OJDV Public Landing Page
+
+   IMPORTANT:
+   VISUAL ONLY.
+   NO APPLICATION LOGIC IS MODIFIED.
+   ============================================================ */
+
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+
+:root {
+
+  --ojdv-orange:
+    #f47a20;
+
+  --ojdv-orange-deep:
+    #ed6a16;
+
+  --ojdv-orange-soft:
+    #fff0e4;
+
+  --ojdv-green:
+    #159b61;
+
+  --ojdv-green-deep:
+    #087a4b;
+
+  --ojdv-green-soft:
+    #e9f8f0;
+
+  --ojdv-warm:
+    #fffdf9;
+
+  --ojdv-white:
+    #ffffff;
+
+  --ojdv-text:
+    #17352a;
+
+  --ojdv-text-soft:
+    #587267;
+
+  --ojdv-muted:
+    #789087;
+
+  --ojdv-border:
+    rgba(23, 53, 42, 0.09);
+
+  --ojdv-shadow:
+    0 24px 70px rgba(25, 93, 63, 0.10);
+
+}
+
+
+/* ============================================================
+   ADMIN APPLICATION CANVAS
+   ============================================================ */
+
+.admin-dashboard {
+
+  min-height:
+    100vh;
+
+  color:
+    var(--ojdv-text) !important;
+
+  background:
+
+    radial-gradient(
+      circle at 8% 8%,
+      rgba(244, 122, 32, 0.10),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 94% 12%,
+      rgba(21, 155, 97, 0.11),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 76% 82%,
+      rgba(244, 122, 32, 0.055),
+      transparent 25%
+    ),
+
+    linear-gradient(
+      180deg,
+      #fffdf9 0%,
+      #ffffff 52%,
+      #f7fcf9 100%
+    ) !important;
+
+}
+
+
+/* ============================================================
+   ADMIN SIDEBAR
+   ============================================================ */
+
+.admin-sidebar {
+
+  background:
+
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(247, 252, 249, 0.92)
+    ) !important;
+
+  border-right:
+    1px solid var(--ojdv-border) !important;
+
+  box-shadow:
+    18px 0 50px rgba(25, 93, 63, 0.055) !important;
+
+  backdrop-filter:
+    blur(24px) !important;
+
+  -webkit-backdrop-filter:
+    blur(24px) !important;
+
+}
+
+
+/* Remove old dark sidebar glow */
+
+.admin-sidebar::before {
+
+  background:
+
+    radial-gradient(
+      circle,
+      rgba(21, 155, 97, 0.10),
+      transparent 65%
+    ) !important;
+
+  filter:
+    blur(65px) !important;
+
+}
+
+
+/* ============================================================
+   SIDEBAR BRAND
+   ============================================================ */
+
+.admin-sidebar,
+.admin-sidebar * {
+
+  color:
+    var(--ojdv-text);
+
+}
+
+
+.admin-sidebar .admin-brand {
+
+  color:
+    var(--ojdv-text) !important;
+
+}
+
+
+.admin-sidebar small,
+.admin-sidebar .admin-brand-subtitle {
+
+  color:
+    var(--ojdv-muted) !important;
+
+}
+
+
+/* ============================================================
+   SIDEBAR SECTION LABELS
+   ============================================================ */
+
+.admin-sidebar .admin-nav-section-title {
+
+  color:
+    var(--ojdv-muted) !important;
+
+  letter-spacing:
+    0.14em;
+
+}
+
+
+/* ============================================================
+   SIDEBAR NAVIGATION
+   ============================================================ */
+
+.admin-nav-item {
+
+  color:
+    #587267 !important;
+
+  border:
+    1px solid transparent !important;
+
+  background:
+    transparent !important;
+
+  border-radius:
+    14px !important;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease !important;
+
+}
+
+
+.admin-nav-item:hover {
+
+  color:
+    var(--ojdv-green-deep) !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(233, 248, 240, 0.75),
+      rgba(255, 255, 255, 0.55)
+    ) !important;
+
+  border-color:
+    rgba(21, 155, 97, 0.10) !important;
+
+  transform:
+    translateX(2px);
+
+}
+
+
+/* ============================================================
+   ACTIVE SIDEBAR ITEM
+   ============================================================ */
+
+.admin-nav-item-active {
+
+  color:
+    #ffffff !important;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #f47a20,
+      #159b61
+    ) !important;
+
+  border:
+    1px solid rgba(244, 122, 32, 0.16) !important;
+
+  box-shadow:
+
+    0 12px 30px
+      rgba(244, 122, 32, 0.16),
+
+    0 8px 22px
+      rgba(21, 155, 97, 0.10) !important;
+
+}
+
+
+.admin-nav-item-active *,
+.admin-nav-item-active span,
+.admin-nav-item-active svg {
+
+  color:
+    #ffffff !important;
+
+}
+
+
+/* Remove old crimson active indicator */
+
+.admin-nav-item-active::before {
+
+  background:
+    rgba(255, 255, 255, 0.92) !important;
+
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.42) !important;
+
+}
+
+
+/* ============================================================
+   ADMIN TOP BAR
+   ============================================================ */
+
+.admin-topbar {
+
+  background:
+    rgba(255, 255, 255, 0.78) !important;
+
+  border-bottom:
+    1px solid var(--ojdv-border) !important;
+
+  box-shadow:
+    0 10px 30px rgba(25, 93, 63, 0.035) !important;
+
+  backdrop-filter:
+    blur(22px) !important;
+
+  -webkit-backdrop-filter:
+    blur(22px) !important;
+
+}
+
+
+/* ============================================================
+   TOP BAR TEXT
+   ============================================================ */
+
+.admin-topbar,
+.admin-topbar * {
+
+  color:
+    var(--ojdv-text);
+
+}
+
+
+.admin-topbar small {
+
+  color:
+    var(--ojdv-muted) !important;
+
+}
+
+
+/* ============================================================
+   ONLINE STATUS
+   ============================================================ */
+
+.admin-status-dot {
+
+  background:
+    var(--ojdv-green) !important;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(21, 155, 97, 0.10) !important;
+
+}
+
+
+/* ============================================================
+   ADMIN AVATAR
+   ============================================================ */
+
+.admin-avatar {
+
+  background:
+
+    linear-gradient(
+      135deg,
+      var(--ojdv-orange),
+      var(--ojdv-green)
+    ) !important;
+
+  color:
+    #ffffff !important;
+
+  box-shadow:
+    0 10px 25px
+    rgba(244, 122, 32, 0.18) !important;
+
+}
+
+
+/* ============================================================
+   LOGOUT / TOP ACTION
+   ============================================================ */
+
+.admin-topbar button {
+
+  background:
+    rgba(255, 255, 255, 0.72) !important;
+
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  color:
+    var(--ojdv-text-soft) !important;
+
+  border-radius:
+    12px !important;
+
+}
+
+
+.admin-topbar button:hover {
+
+  background:
+    var(--ojdv-orange-soft) !important;
+
+  border-color:
+    rgba(244, 122, 32, 0.18) !important;
+
+  color:
+    var(--ojdv-orange-deep) !important;
+
+}
+
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+
+.admin-main,
+.admin-content {
+
+  background:
+    transparent !important;
+
+}
+
+
+/* ============================================================
+   ADMIN PAGE HEADER
+   ============================================================ */
+
+.admin-dashboard h1 {
+
+  color:
+    var(--ojdv-text) !important;
+
+  letter-spacing:
+    -0.045em;
+
+}
+
+
+.admin-dashboard h2,
+.admin-dashboard h3 {
+
+  color:
+    var(--ojdv-text) !important;
+
+}
+
+
+.admin-dashboard p {
+
+  color:
+    var(--ojdv-text-soft);
+
+}
+
+
+/* ============================================================
+   EYEBROWS / LABELS
+   ============================================================ */
+
+.admin-dashboard .eyebrow,
+.admin-dashboard .section-eyebrow {
+
+  color:
+    var(--ojdv-green) !important;
+
+  letter-spacing:
+    0.16em;
+
+}
+
+
+/* ============================================================
+   ADMIN STAT CARDS
+   ============================================================ */
+
+.admin-stat-card {
+
+  position:
+    relative;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  border-radius:
+    24px !important;
+
+  background:
+
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.90),
+      rgba(255, 255, 255, 0.64)
+    ) !important;
+
+  box-shadow:
+
+    0 17px 42px
+      rgba(8, 122, 75, 0.075),
+
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.90) !important;
+
+  backdrop-filter:
+    blur(18px) !important;
+
+  -webkit-backdrop-filter:
+    blur(18px) !important;
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease !important;
+
+}
+
+
+.admin-stat-card:hover {
+
+  transform:
+    translateY(-5px);
+
+  border-color:
+    rgba(21, 155, 97, 0.18) !important;
+
+  box-shadow:
+
+    0 25px 55px
+      rgba(8, 122, 75, 0.10),
+
+    0 10px 24px
+      rgba(244, 122, 32, 0.045),
+
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.95) !important;
+
+}
+
+
+/* Remove old purple card glow */
+
+.admin-stat-card::after {
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(21, 155, 97, 0.09),
+      transparent 68%
+    ) !important;
+
+  filter:
+    blur(25px) !important;
+
+}
+
+
+/* ============================================================
+   STAT ICONS
+   ============================================================ */
+
+.admin-stat-card svg {
+
+  color:
+    var(--ojdv-green) !important;
+
+}
+
+
+.admin-stat-card .icon {
+
+  background:
+    var(--ojdv-green-soft) !important;
+
+  color:
+    var(--ojdv-green) !important;
+
+  border:
+    1px solid rgba(21, 155, 97, 0.10) !important;
+
+}
+
+
+/* ============================================================
+   STAT NUMBERS
+   ============================================================ */
+
+.admin-stat-card strong,
+.admin-stat-card .stat-value {
+
+  color:
+    var(--ojdv-text) !important;
+
+}
+
+
+/* ============================================================
+   DASHBOARD PANELS
+   ============================================================ */
+
+.admin-dashboard .admin-panel {
+
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  border-radius:
+    24px !important;
+
+  background:
+
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.88),
+      rgba(255, 255, 255, 0.66)
+    ) !important;
+
+  box-shadow:
+
+    0 17px 42px
+      rgba(8, 122, 75, 0.065),
+
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.90) !important;
+
+  backdrop-filter:
+    blur(16px) !important;
+
+  -webkit-backdrop-filter:
+    blur(16px) !important;
+
+}
+
+
+/* ============================================================
+   GENERIC WHITE DASHBOARD CARDS
+   ============================================================ */
+
+.admin-dashboard .rounded-2xl.border,
+.admin-dashboard .rounded-3xl.border {
+
+  border-color:
+    var(--ojdv-border) !important;
+
+}
+
+
+.admin-dashboard .bg-white {
+
+  background:
+    rgba(255, 255, 255, 0.76) !important;
+
+}
+
+
+/* ============================================================
+   OLD TAILWIND BLUE → OJDV GREEN
+   ============================================================ */
+
+.admin-dashboard .text-blue-500,
+.admin-dashboard .text-blue-600,
+.admin-dashboard .text-blue-700,
+.admin-dashboard .text-indigo-500,
+.admin-dashboard .text-indigo-600,
+.admin-dashboard .text-indigo-700 {
+
+  color:
+    var(--ojdv-green) !important;
+
+}
+
+
+.admin-dashboard .bg-blue-50,
+.admin-dashboard .bg-blue-100,
+.admin-dashboard .bg-indigo-50,
+.admin-dashboard .bg-indigo-100 {
+
+  background:
+    var(--ojdv-green-soft) !important;
+
+}
+
+
+/* ============================================================
+   OLD PURPLE → OJDV ORANGE
+   ============================================================ */
+
+.admin-dashboard .text-violet-500,
+.admin-dashboard .text-violet-600,
+.admin-dashboard .text-violet-700 {
+
+  color:
+    var(--ojdv-orange) !important;
+
+}
+
+
+.admin-dashboard .bg-violet-50,
+.admin-dashboard .bg-violet-100 {
+
+  background:
+    var(--ojdv-orange-soft) !important;
+
+}
+
+
+/* ============================================================
+   OLD CRIMSON / ROSE → ORANGE
+   ============================================================ */
+
+.admin-dashboard .text-rose-500,
+.admin-dashboard .text-rose-600,
+.admin-dashboard .text-rose-700,
+.admin-dashboard .text-red-500,
+.admin-dashboard .text-red-600,
+.admin-dashboard .text-red-700 {
+
+  color:
+    var(--ojdv-orange-deep) !important;
+
+}
+
+
+.admin-dashboard .bg-rose-50,
+.admin-dashboard .bg-rose-100,
+.admin-dashboard .bg-red-50,
+.admin-dashboard .bg-red-100 {
+
+  background:
+    var(--ojdv-orange-soft) !important;
+
+}
+
+
+/* ============================================================
+   PRIMARY ADMIN BUTTONS
+   ============================================================ */
+
+.admin-dashboard button.bg-indigo-600,
+.admin-dashboard a.bg-indigo-600,
+.admin-dashboard button.bg-blue-600,
+.admin-dashboard a.bg-blue-600 {
+
+  background:
+
+    linear-gradient(
+      135deg,
+      var(--ojdv-orange),
+      #f28b39
+    ) !important;
+
+  border-color:
+    rgba(244, 122, 32, 0.18) !important;
+
+  color:
+    #ffffff !important;
+
+  box-shadow:
+    0 12px 30px
+    rgba(244, 122, 32, 0.18) !important;
+
+}
+
+
+.admin-dashboard button.bg-indigo-600:hover,
+.admin-dashboard a.bg-indigo-600:hover,
+.admin-dashboard button.bg-blue-600:hover,
+.admin-dashboard a.bg-blue-600:hover {
+
+  background:
+
+    linear-gradient(
+      135deg,
+      var(--ojdv-orange-deep),
+      var(--ojdv-green)
+    ) !important;
+
+  transform:
+    translateY(-2px);
+
+}
+
+
+/* ============================================================
+   GREEN ACTIONS
+   ============================================================ */
+
+.admin-dashboard button.bg-emerald-600,
+.admin-dashboard button.bg-green-600 {
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--ojdv-green),
+      #20aa72
+    ) !important;
+
+  color:
+    #ffffff !important;
+
+  box-shadow:
+    0 12px 28px
+    rgba(21, 155, 97, 0.18) !important;
+
+}
+
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+
+.admin-dashboard table {
+
+  color:
+    var(--ojdv-text) !important;
+
+}
+
+
+.admin-dashboard thead {
+
+  background:
+    rgba(233, 248, 240, 0.58) !important;
+
+}
+
+
+.admin-dashboard th {
+
+  color:
+    var(--ojdv-text-soft) !important;
+
+  border-color:
+    var(--ojdv-border) !important;
+
+}
+
+
+.admin-dashboard td {
+
+  color:
+    var(--ojdv-text-soft) !important;
+
+  border-color:
+    rgba(23, 53, 42, 0.065) !important;
+
+}
+
+
+.admin-dashboard tbody tr {
+
+  transition:
+    background 180ms ease !important;
+
+}
+
+
+.admin-dashboard tbody tr:hover {
+
+  background:
+    rgba(233, 248, 240, 0.42) !important;
+
+}
+
+
+/* ============================================================
+   APPROVAL / STATUS BADGES
+   ============================================================ */
+
+.admin-dashboard .rounded-full {
+
+  border-color:
+    rgba(21, 155, 97, 0.10);
+
+}
+
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+.admin-dashboard input,
+.admin-dashboard textarea,
+.admin-dashboard select {
+
+  color:
+    var(--ojdv-text) !important;
+
+  background:
+    rgba(255, 255, 255, 0.78) !important;
+
+  border:
+    1px solid var(--ojdv-border) !important;
+
+  border-radius:
+    12px !important;
+
+}
+
+
+.admin-dashboard input:focus,
+.admin-dashboard textarea:focus,
+.admin-dashboard select:focus {
+
+  outline:
+    none !important;
+
+  border-color:
+    rgba(21, 155, 97, 0.28) !important;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(21, 155, 97, 0.08) !important;
+
+}
+
+
+/* ============================================================
+   DASHBOARD EMPTY STATES
+   ============================================================ */
+
+.admin-dashboard .empty-state {
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.76),
+      rgba(233, 248, 240, 0.44)
+    ) !important;
+
+  border-color:
+    var(--ojdv-border) !important;
+
+}
+
+
+.admin-dashboard .empty-state svg {
+
+  color:
+    var(--ojdv-green) !important;
+
+}
+
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+html {
+
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    #159b61 #f1f8f4;
+
+}
+
+
+::-webkit-scrollbar {
+
+  width:
+    9px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+  background:
+    #f1f8f4;
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+  border-radius:
+    999px;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #f47a20,
+      #159b61
+    );
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #ed6a16,
+      #087a4b
+    );
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .admin-sidebar {
+
+    box-shadow:
+      20px 0 55px
+      rgba(25, 93, 63, 0.12) !important;
+
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .admin-stat-card:hover {
+
+    transform:
+      none;
+
+  }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .admin-dashboard *,
+  .admin-sidebar *,
+  .admin-topbar *,
+  .admin-stat-card {
+
+    animation:
+      none !important;
+
+    transition:
+      none !important;
+
+  }
+
+}
+
+
+/* ============================================================
+   OJDV ADMIN — FINAL UNIFIED LANDING-PAGE DESIGN SYSTEM
+   This layer intentionally sits at the end of Admin.css so it
+   overrides legacy dashboard theme layers without changing JSX.
+   ============================================================ */
+
+:root {
+  --admin-forest: #17352b;
+  --admin-forest-2: #245441;
+  --admin-terracotta: #d95f39;
+  --admin-terracotta-dark: #b94728;
+  --admin-gold: #d9a441;
+  --admin-cream: #fbf7ef;
+  --admin-sage: #dde9df;
+  --admin-paper: #fffdf9;
+  --admin-text: #26312d;
+  --admin-muted: #6c7771;
+  --admin-border: rgba(23, 53, 43, 0.11);
+  --admin-shadow: 0 24px 70px rgba(23, 53, 43, 0.12);
+  --admin-shadow-soft: 0 12px 35px rgba(23, 53, 43, 0.08);
+}
+
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+
+.admin-shell {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  color: var(--admin-text) !important;
+  background:
+    radial-gradient(
+      circle at 8% 5%,
+      rgba(217, 95, 57, 0.10),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 92% 12%,
+      rgba(36, 84, 65, 0.10),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 75% 90%,
+      rgba(217, 164, 65, 0.07),
+      transparent 24%
+    ),
+    var(--admin-cream) !important;
+  font-family:
+    "DM Sans",
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif !important;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.admin-sidebar {
+  position: fixed !important;
+  inset: 0 auto 0 0 !important;
+  z-index: 200 !important;
+  width: 270px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 22px 15px !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 253, 249, 0.97),
+      rgba(241, 247, 242, 0.94)
+    ) !important;
+  color: var(--admin-text) !important;
+  border-right: 1px solid var(--admin-border) !important;
+  box-shadow:
+    18px 0 60px rgba(23, 53, 43, 0.06) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  overflow: hidden;
+}
+
+.admin-sidebar::before {
+  content: "" !important;
+  position: absolute !important;
+  width: 210px !important;
+  height: 210px !important;
+  top: 70px !important;
+  left: -120px !important;
+  background: rgba(217, 95, 57, 0.10) !important;
+  filter: blur(65px) !important;
+  pointer-events: none !important;
+}
+
+.admin-brand {
+  position: relative !important;
+  z-index: 2 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 5px 9px 26px !important;
+}
+
+.admin-brand-logo {
+  width: 52px !important;
+  height: 52px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid rgba(23, 53, 43, 0.10) !important;
+  box-shadow:
+    0 12px 28px rgba(23, 53, 43, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+.admin-brand-logo img {
+  width: 44px !important;
+  height: 44px !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+
+.admin-brand-text strong {
+  color: var(--admin-forest) !important;
+  font-family: "Space Grotesk", "DM Sans", sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+}
+
+.admin-brand-text span {
+  color: var(--admin-muted) !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.20em !important;
+}
+
+.admin-sidebar-label {
+  position: relative !important;
+  z-index: 2 !important;
+  color: var(--admin-muted) !important;
+  margin: 10px 10px 9px !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.16em !important;
+}
+
+.admin-navigation {
+  position: relative !important;
+  z-index: 2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.admin-nav-item {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 47px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 13px !important;
+  padding: 0 14px !important;
+  border: 1px solid transparent !important;
+  border-radius: 14px !important;
+  background: transparent !important;
+  color: var(--admin-muted) !important;
+  font-family: inherit !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  transition:
+    transform 220ms ease,
+    color 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease !important;
+}
+
+.admin-nav-item:hover {
+  color: var(--admin-forest) !important;
+  background: rgba(255, 255, 255, 0.76) !important;
+  border-color: rgba(23, 53, 43, 0.08) !important;
+  transform: translateX(3px) !important;
+  box-shadow: 0 8px 22px rgba(23, 53, 43, 0.06) !important;
+}
+
+.admin-nav-item-active {
+  color: #ffffff !important;
+  background:
+    linear-gradient(
+      135deg,
+      var(--admin-forest),
+      var(--admin-forest-2)
+    ) !important;
+  border-color: transparent !important;
+  box-shadow:
+    0 14px 30px rgba(23, 53, 43, 0.18) !important;
+}
+
+.admin-nav-item-active:hover {
+  color: #ffffff !important;
+  transform: translateX(3px) !important;
+  background:
+    linear-gradient(
+      135deg,
+      var(--admin-forest),
+      var(--admin-forest-2)
+    ) !important;
+}
+
+.admin-nav-item-active::before {
+  left: auto !important;
+  right: 0 !important;
+  top: 10px !important;
+  bottom: 10px !important;
+  width: 3px !important;
+  background: var(--admin-terracotta) !important;
+  box-shadow: 0 0 12px rgba(217, 95, 57, 0.45) !important;
+}
+
+.admin-nav-icon,
+.admin-nav-item-active .admin-nav-icon {
+  color: currentColor !important;
+}
+
+.admin-sidebar-watermark {
+  color: rgba(23, 53, 43, 0.035) !important;
+}
+
+/* ============================================================
+   MAIN AREA
+   ============================================================ */
+
+.admin-main {
+  position: relative !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+  margin-left: 270px !important;
+  background: transparent !important;
+}
+
+.admin-topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+  min-height: 82px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  padding: 14px 34px !important;
+  background: rgba(251, 247, 239, 0.82) !important;
+  color: var(--admin-text) !important;
+  border-bottom: 1px solid var(--admin-border) !important;
+  box-shadow: 0 8px 30px rgba(23, 53, 43, 0.035) !important;
+  backdrop-filter: blur(22px) !important;
+  -webkit-backdrop-filter: blur(22px) !important;
+}
+
+.admin-topbar-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.admin-topbar-kicker {
+  display: block !important;
+  margin-bottom: 3px !important;
+  color: var(--admin-terracotta) !important;
+  font-size: 9px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.18em !important;
+}
+
+.admin-topbar h1 {
+  margin: 0 !important;
+  color: var(--admin-forest) !important;
+  font-family: "Space Grotesk", "DM Sans", sans-serif !important;
+  font-size: 25px !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.035em !important;
+}
+
+.admin-topbar-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.admin-status {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 12px !important;
+  border: 1px solid rgba(36, 84, 65, 0.12) !important;
+  border-radius: 999px !important;
+  background: rgba(221, 233, 223, 0.58) !important;
+  color: var(--admin-forest-2) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+.admin-status-dot {
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: #245441 !important;
+  box-shadow: 0 0 0 4px rgba(36, 84, 65, 0.10) !important;
+}
+
+.admin-user {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 5px 10px 5px 5px !important;
+  border: 1px solid var(--admin-border) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.68) !important;
+}
+
+.admin-user-avatar {
+  width: 37px !important;
+  height: 37px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 50% !important;
+  background:
+    linear-gradient(
+      135deg,
+      var(--admin-terracotta),
+      var(--admin-gold)
+    ) !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  box-shadow: 0 8px 18px rgba(217, 95, 57, 0.18) !important;
+}
+
+.admin-user-details {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+.admin-user-details strong {
+  color: var(--admin-forest) !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+.admin-user-details span {
+  color: var(--admin-muted) !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.admin-logout {
+  width: 40px !important;
+  height: 40px !important;
+  display: grid !important;
+  place-items: center !important;
+  border: 1px solid var(--admin-border) !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.70) !important;
+  color: var(--admin-forest) !important;
+  cursor: pointer !important;
+  transition: all 200ms ease !important;
+}
+
+.admin-logout:hover {
+  color: #ffffff !important;
+  background: var(--admin-terracotta) !important;
+  border-color: var(--admin-terracotta) !important;
+  transform: translateY(-2px) !important;
+}
+
+.admin-menu-button {
+  border: 1px solid var(--admin-border) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: var(--admin-forest) !important;
+  border-radius: 11px !important;
+}
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.admin-content {
+  position: relative !important;
+  min-height: calc(100vh - 82px) !important;
+  padding: 38px 34px 70px !important;
+  background: transparent !important;
+}
+
+.admin-content-inner {
+  position: relative !important;
+  z-index: 2 !important;
+  width: min(100%, 1380px) !important;
+  margin: 0 auto !important;
+}
+
+.admin-watermark {
+  opacity: 0.035 !important;
+  pointer-events: none !important;
+}
+
+.admin-watermark img {
+  filter: none !important;
+}
+
+/* ============================================================
+   DASHBOARD HEADER
+   ============================================================ */
+
+.admin-welcome {
+  position: relative !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  gap: 30px !important;
+  margin-bottom: 28px !important;
+  padding: 32px !important;
+  border: 1px solid rgba(23, 53, 43, 0.09) !important;
+  border-radius: 28px !important;
+  overflow: hidden !important;
+  background:
+    radial-gradient(
+      circle at 88% 10%,
+      rgba(217, 164, 65, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(241, 247, 242, 0.80)
+    ) !important;
+  box-shadow: var(--admin-shadow-soft) !important;
+}
+
+.admin-welcome::after {
+  content: "" !important;
+  position: absolute !important;
+  right: -80px !important;
+  bottom: -110px !important;
+  width: 270px !important;
+  height: 270px !important;
+  border-radius: 50% !important;
+  background: rgba(217, 95, 57, 0.08) !important;
+  filter: blur(30px) !important;
+  pointer-events: none !important;
+}
+
+.admin-section-kicker {
+  color: var(--admin-terracotta) !important;
+  font-size: 9px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.18em !important;
+}
+
+.admin-welcome h2 {
+  position: relative !important;
+  z-index: 1 !important;
+  margin: 7px 0 7px !important;
+  color: var(--admin-forest) !important;
+  font-family: "Space Grotesk", "DM Sans", sans-serif !important;
+  font-size: clamp(32px, 4vw, 48px) !important;
+  line-height: 1 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.admin-welcome h2 span {
+  color: var(--admin-terracotta) !important;
+}
+
+.admin-welcome p {
+  position: relative !important;
+  z-index: 1 !important;
+  max-width: 650px !important;
+  margin: 0 !important;
+  color: var(--admin-muted) !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+}
+
+.admin-welcome-badge {
+  position: relative !important;
+  z-index: 2 !important;
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  padding: 10px 14px !important;
+  border: 1px solid rgba(36, 84, 65, 0.12) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: var(--admin-forest) !important;
+  font-size: 9px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.12em !important;
+}
+
+.admin-welcome-badge span {
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: var(--admin-terracotta) !important;
+  box-shadow: 0 0 0 4px rgba(217, 95, 57, 0.10) !important;
+}
+
+/* ============================================================
+   KPI CARDS
+   ============================================================ */
+
+.admin-stats-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 17px !important;
+  margin-bottom: 20px !important;
+}
+
+.admin-stat-card {
+  position: relative !important;
+  min-height: 170px !important;
+  padding: 21px !important;
+  border: 1px solid rgba(23, 53, 43, 0.09) !important;
+  border-radius: 21px !important;
+  overflow: hidden !important;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(247, 250, 247, 0.78)
+    ) !important;
+  box-shadow: var(--admin-shadow-soft) !important;
+  color: var(--admin-text) !important;
+  transform: translateZ(0) !important;
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    border-color 260ms ease !important;
+}
+
+.admin-stat-card::after {
+  content: "" !important;
+  position: absolute !important;
+  width: 120px !important;
+  height: 120px !important;
+  right: -55px !important;
+  top: -55px !important;
+  border-radius: 50% !important;
+  background: rgba(217, 95, 57, 0.07) !important;
+  pointer-events: none !important;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-6px) rotateX(1deg) !important;
+  border-color: rgba(217, 95, 57, 0.16) !important;
+  box-shadow:
+    0 24px 55px rgba(23, 53, 43, 0.13) !important;
+}
+
+.admin-stat-top {
+  position: relative !important;
+  z-index: 2 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+
+.admin-stat-label {
+  color: var(--admin-muted) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+.admin-stat-icon {
+  width: 39px !important;
+  height: 39px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 12px !important;
+  background: rgba(217, 95, 57, 0.10) !important;
+  color: var(--admin-terracotta) !important;
+  font-size: 17px !important;
+}
+
+.admin-stat-value,
+.admin-stat-card .stat-value {
+  position: relative !important;
+  z-index: 2 !important;
+  display: block !important;
+  margin-top: 20px !important;
+  color: var(--admin-forest) !important;
+  font-family: "Space Grotesk", "DM Sans", sans-serif !important;
+  font-size: 38px !important;
+  line-height: 1 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.admin-stat-change {
+  position: relative !important;
+  z-index: 2 !important;
+  display: block !important;
+  margin-top: 10px !important;
+  color: var(--admin-muted) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+}
+
+/* ============================================================
+   PANELS
+   ============================================================ */
+
+.admin-section-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr) !important;
+  gap: 20px !important;
+}
+
+.admin-panel,
+.admin-dashboard .admin-panel {
+  position: relative !important;
+  border: 1px solid rgba(23, 53, 43, 0.09) !important;
+  border-radius: 24px !important;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(247, 250, 247, 0.80)
+    ) !important;
+  box-shadow: var(--admin-shadow-soft) !important;
+  color: var(--admin-text) !important;
+  overflow: hidden !important;
+}
+
+.admin-panel-heading {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  padding: 22px 23px 15px !important;
+}
+
+.admin-panel-heading h3 {
+  margin: 5px 0 0 !important;
+  color: var(--admin-forest) !important;
+  font-family: "Space Grotesk", "DM Sans", sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.03em !important;
+}
+
+/* ============================================================
+   QUICK MANAGEMENT
+   ============================================================ */
+
+.admin-quick-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  padding: 8px 20px 20px !important;
+}
+
+.admin-quick-grid button {
+  position: relative !important;
+  min-height: 145px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  padding: 18px !important;
+  border: 1px solid rgba(23, 53, 43, 0.08) !important;
+  border-radius: 17px !important;
+  background: rgba(255, 253, 249, 0.82) !important;
+  color: var(--admin-text) !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease !important;
+}
+
+.admin-quick-grid button:hover {
+  transform: translateY(-5px) !important;
+  border-color: rgba(217, 95, 57, 0.20) !important;
+  background: #ffffff !important;
+  box-shadow:
+    0 18px 38px rgba(23, 53, 43, 0.10) !important;
+}
+
+.admin-quick-grid button > span {
+  width: 38px !important;
+  height: 38px !important;
+  display: grid !important;
+  place-items: center !important;
+  margin-bottom: 18px !important;
+  border-radius: 11px !important;
+  background: rgba(36, 84, 65, 0.09) !important;
+  color: var(--admin-forest-2) !important;
+}
+
+.admin-quick-grid strong {
+  color: var(--admin-forest) !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+}
+
+.admin-quick-grid small {
+  margin-top: 5px !important;
+  color: var(--admin-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+}
+
+/* ============================================================
+   EMPTY / ACTIVITY
+   ============================================================ */
+
+.admin-empty-state {
+  min-height: 250px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 20px 20px !important;
+  padding: 25px !important;
+  border: 1px dashed rgba(23, 53, 43, 0.13) !important;
+  border-radius: 18px !important;
+  background: rgba(251, 247, 239, 0.55) !important;
+  text-align: center !important;
+}
+
+.admin-empty-icon {
+  width: 48px !important;
+  height: 48px !important;
+  display: grid !important;
+  place-items: center !important;
+  margin-bottom: 12px !important;
+  border-radius: 15px !important;
+  background: rgba(217, 164, 65, 0.13) !important;
+  color: var(--admin-gold) !important;
+  font-size: 23px !important;
+}
+
+.admin-empty-state strong {
+  color: var(--admin-forest) !important;
+  font-size: 13px !important;
+}
+
+.admin-empty-state p {
+  max-width: 250px !important;
+  margin: 7px 0 0 !important;
+  color: var(--admin-muted) !important;
+  font-size: 10px !important;
+  line-height: 1.6 !important;
+}
+
+/* ============================================================
+   LEGACY TAILWIND COLOR NORMALIZATION
+   This prevents old dashboard utility classes from introducing
+   blue / purple / indigo / red into the visual system.
+   ============================================================ */
+
+.admin-dashboard .bg-blue-50,
+.admin-dashboard .bg-blue-100,
+.admin-dashboard .bg-indigo-50,
+.admin-dashboard .bg-indigo-100,
+.admin-dashboard .bg-violet-50,
+.admin-dashboard .bg-violet-100,
+.admin-dashboard .bg-amber-50,
+.admin-dashboard .bg-amber-100,
+.admin-dashboard .bg-red-50,
+.admin-dashboard .bg-red-100,
+.admin-dashboard .bg-rose-50,
+.admin-dashboard .bg-rose-100 {
+  background: rgba(217, 95, 57, 0.08) !important;
+}
+
+.admin-dashboard .text-blue-600,
+.admin-dashboard .text-blue-700,
+.admin-dashboard .text-indigo-500,
+.admin-dashboard .text-indigo-600,
+.admin-dashboard .text-indigo-700,
+.admin-dashboard .text-violet-500,
+.admin-dashboard .text-violet-600,
+.admin-dashboard .text-violet-700,
+.admin-dashboard .text-red-500,
+.admin-dashboard .text-red-600,
+.admin-dashboard .text-red-700,
+.admin-dashboard .text-rose-500,
+.admin-dashboard .text-rose-600,
+.admin-dashboard .text-rose-700,
+.admin-dashboard .text-amber-500,
+.admin-dashboard .text-amber-600,
+.admin-dashboard .text-amber-700 {
+  color: var(--admin-terracotta) !important;
+}
+
+.admin-dashboard .bg-green-50,
+.admin-dashboard .bg-green-100 {
+  background: rgba(36, 84, 65, 0.09) !important;
+}
+
+.admin-dashboard .text-green-500,
+.admin-dashboard .text-green-600,
+.admin-dashboard .text-green-700 {
+  color: var(--admin-forest-2) !important;
+}
+
+.admin-dashboard .bg-blue-600,
+.admin-dashboard .bg-indigo-600,
+.admin-dashboard .bg-violet-600,
+.admin-dashboard .bg-red-600 {
+  background: var(--admin-terracotta) !important;
+}
+
+.admin-dashboard .bg-green-600 {
+  background: var(--admin-forest-2) !important;
+}
+
+/* ============================================================
+   TABLES / DATA
+   ============================================================ */
+
+.admin-dashboard table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  color: var(--admin-text) !important;
+}
+
+.admin-dashboard thead {
+  background: rgba(221, 233, 223, 0.45) !important;
+}
+
+.admin-dashboard th {
+  color: var(--admin-muted) !important;
+  border-color: rgba(23, 53, 43, 0.07) !important;
+  font-size: 10px !important;
+  font-weight: 850 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+}
+
+.admin-dashboard td {
+  color: var(--admin-text) !important;
+  border-color: rgba(23, 53, 43, 0.065) !important;
+}
+
+.admin-dashboard tbody tr {
+  transition: background 180ms ease, transform 180ms ease !important;
+}
+
+.admin-dashboard tbody tr:hover {
+  background: rgba(221, 233, 223, 0.35) !important;
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+.admin-dashboard input,
+.admin-dashboard textarea,
+.admin-dashboard select {
+  color: var(--admin-text) !important;
+  background: rgba(255, 255, 255, 0.80) !important;
+  border: 1px solid var(--admin-border) !important;
+  border-radius: 12px !important;
+}
+
+.admin-dashboard input:focus,
+.admin-dashboard textarea:focus,
+.admin-dashboard select:focus {
+  outline: none !important;
+  border-color: rgba(217, 95, 57, 0.30) !important;
+  box-shadow:
+    0 0 0 4px rgba(217, 95, 57, 0.08) !important;
+}
+
+/* ============================================================
+   FOCUS / ACCESSIBILITY
+   ============================================================ */
+
+.admin-shell button:focus-visible,
+.admin-shell a:focus-visible,
+.admin-shell input:focus-visible,
+.admin-shell select:focus-visible,
+.admin-shell textarea:focus-visible {
+  outline: 3px solid rgba(217, 95, 57, 0.24) !important;
+  outline-offset: 3px !important;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+html {
+  scrollbar-width: thin !important;
+  scrollbar-color:
+    var(--admin-terracotta)
+    var(--admin-cream) !important;
+}
+
+::-webkit-scrollbar {
+  width: 9px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--admin-cream) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px !important;
+  background:
+    linear-gradient(
+      180deg,
+      var(--admin-terracotta),
+      var(--admin-forest-2)
+    ) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      180deg,
+      var(--admin-terracotta-dark),
+      var(--admin-forest)
+    ) !important;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 1100px) {
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .admin-section-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .admin-sidebar {
+    transform: translateX(-105%) !important;
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+    box-shadow: 25px 0 65px rgba(23, 53, 43, 0.15) !important;
+  }
+
+  .admin-sidebar-open {
+    transform: translateX(0) !important;
+  }
+
+  .admin-main {
+    margin-left: 0 !important;
+  }
+
+  .admin-sidebar-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 150 !important;
+    border: 0 !important;
+    background: rgba(23, 53, 43, 0.18) !important;
+    backdrop-filter: blur(4px) !important;
+  }
+
+  .admin-topbar {
+    padding: 13px 20px !important;
+  }
+
+  .admin-content {
+    padding: 25px 20px 55px !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .admin-topbar {
+    min-height: 72px !important;
+  }
+
+  .admin-topbar-right .admin-status,
+  .admin-user-details {
+    display: none !important;
+  }
+
+  .admin-welcome {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    padding: 24px !important;
+    border-radius: 22px !important;
+  }
+
+  .admin-welcome h2 {
+    font-size: 34px !important;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-quick-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-section-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-stat-card:hover,
+  .admin-quick-grid button:hover {
+    transform: translateY(-2px) !important;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-shell *,
+  .admin-shell *::before,
+  .admin-shell *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

@@ -1,4 +1,4 @@
-import Courses from "./pages/Courses.jsx";
+﻿import Courses from "./pages/Courses.jsx";
 import CourseLessonViewer from "./pages/CourseLessonViewer.jsx";
 import AdminCourseLessons from "./pages/Admin/AdminCourseLessons.jsx";
 import CourseDetails from "./pages/CourseDetails.jsx";
@@ -13,6 +13,8 @@ import { useAuth } from "./auth/AuthContext.jsx";
 
 import AppShell from "./components/AppShell.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import MagicRings from "./components/MagicRings.jsx";
+import GlowCursor from "./components/GlowCursor.jsx";
 
 import "./App.css";
 
@@ -685,7 +687,26 @@ if (courseLessonMatch) {
 
   return (
     <div className="site">
-{/* ======================================================
+      <GlowCursor
+        color="#E65B78"
+        secondaryColor="#C89A5B"
+        trailLength={44}
+        trailWidth={8}
+        trailTaper={0.82}
+        followSpeed={0.18}
+        glowIntensity={1.35}
+        glowSpread={1.0}
+        hotspot={0.7}
+        brightness={1.05}
+        opacity={0.62}
+        pulseSpeed={1}
+        noiseStrength={0.02}
+        idleFade
+        idleTimeout={650}
+        fadeDuration={800}
+        blendMode="screen"
+      />
+      {/* ======================================================
           PREMIUM CURSOR
           ====================================================== */}
 {/* ======================================================
@@ -759,7 +780,30 @@ if (courseLessonMatch) {
 
       <section className="hero-section">
                 <div className="hero-background">
-</div>
+          <MagicRings
+            color="#FF7A18"
+            colorMiddle="#FFFFFF"
+            colorTwo="#18A558"
+            speed={0.42}
+            ringCount={6}
+            attenuation={10}
+            lineThickness={2}
+            baseRadius={0.35}
+            radiusStep={0.1}
+            scaleRate={0.1}
+            opacity={0.12}
+            blur={0}
+            noiseAmount={0.018}
+            rotation={0}
+            ringGap={1.5}
+            fadeIn={0.7}
+            fadeOut={0.5}
+            followMouse
+            mouseInfluence={0.08}
+            hoverScale={1.04}
+            parallax={0.015}
+          />
+        </div>
 
         <div className="hero-glow hero-glow-one" />
         <div className="hero-glow hero-glow-two" />
