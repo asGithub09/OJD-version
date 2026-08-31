@@ -1,0 +1,473 @@
+﻿/* ============================================================
+   OJDV STUDENT WORKSPACE SHELL
+   Light premium design
+   ============================================================ */
+
+.application {
+  min-height: 100vh;
+  display: flex;
+  color: #173b3a;
+  background:
+    radial-gradient(
+      circle at 10% 5%,
+      rgba(255, 122, 24, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(25, 164, 99, 0.08),
+      transparent 30%
+    ),
+    #f4fbf8;
+}
+
+/* ==================== SIDEBAR ==================== */
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 100;
+  width: 250px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px 16px;
+
+  background: rgba(255, 255, 255, 0.94);
+  border-right: 1px solid rgba(23, 59, 58, 0.09);
+
+  box-shadow: 8px 0 35px rgba(23, 59, 58, 0.05);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 4px 8px 28px;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 122, 24, 0.12),
+      rgba(25, 164, 99, 0.12)
+    );
+
+  border: 1px solid rgba(23, 59, 58, 0.08);
+}
+
+.brand-mark img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.sidebar-brand > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sidebar-brand strong {
+  color: #173b3a;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.sidebar-brand span {
+  color: #78918e;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+/* ==================== NAVIGATION ==================== */
+
+.nav-label {
+  margin: 10px 10px 9px;
+
+  color: #8aa19e;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-item {
+  width: 100%;
+  min-height: 45px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 12px;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  background: transparent;
+  color: #607875;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
+  text-align: left;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.nav-item:hover {
+  background: rgba(255, 122, 24, 0.06);
+  border-color: rgba(255, 122, 24, 0.13);
+  color: #d96812;
+  transform: translateX(2px);
+}
+
+.nav-item.active {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 122, 24, 0.10),
+      rgba(25, 164, 99, 0.08)
+    );
+
+  border-color: rgba(255, 122, 24, 0.14);
+  color: #173b3a;
+}
+
+.nav-icon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 9px;
+
+  background: rgba(23, 59, 58, 0.045);
+
+  color: #6d8582;
+  font-size: 13px;
+}
+
+.nav-item.active .nav-icon {
+  background: rgba(255, 122, 24, 0.12);
+  color: #e56d13;
+}
+
+/* ==================== SIDEBAR FOOTER ==================== */
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.sidebar-footer .nav-item {
+  margin-bottom: 10px;
+}
+
+.security-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 11px 12px;
+
+  border: 1px solid rgba(25, 164, 99, 0.13);
+  border-radius: 11px;
+
+  background: rgba(25, 164, 99, 0.045);
+
+  color: #718986;
+
+  font-size: 10px;
+}
+
+.security-note span {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+
+  border-radius: 50%;
+
+  background: #19a463;
+
+  box-shadow:
+    0 0 0 4px rgba(25, 164, 99, 0.10);
+}
+
+/* ==================== MAIN AREA ==================== */
+
+.application-content {
+  min-width: 0;
+  min-height: 100vh;
+
+  flex: 1;
+
+  margin-left: 250px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==================== TOPBAR ==================== */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  min-height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 0 32px;
+
+  background: rgba(255, 255, 255, 0.84);
+
+  border-bottom: 1px solid rgba(23, 59, 58, 0.08);
+
+  box-shadow: 0 4px 20px rgba(23, 59, 58, 0.025);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.topbar-title span {
+  display: block;
+
+  color: #e56d13;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.topbar-title strong {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #607a76;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-details {
+  text-align: right;
+}
+
+.user-details strong {
+  display: block;
+
+  color: #173b3a;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.user-details span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #829895;
+
+  font-size: 9px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 122, 24, 0.16),
+      rgba(25, 164, 99, 0.14)
+    );
+
+  border: 1px solid rgba(23, 59, 58, 0.08);
+
+  color: #173b3a;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.logout-button {
+  min-height: 37px;
+
+  padding: 0 14px;
+
+  border: 1px solid rgba(23, 59, 58, 0.09);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: #627a77;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.logout-button:hover {
+  background: rgba(255, 122, 24, 0.07);
+  border-color: rgba(255, 122, 24, 0.20);
+  color: #d96812;
+}
+
+/* ==================== MOBILE MENU ==================== */
+
+.mobile-menu {
+  width: 40px;
+  height: 40px;
+
+  display: none;
+  place-items: center;
+
+  border: 1px solid rgba(23, 59, 58, 0.09);
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: #173b3a;
+
+  font-size: 18px;
+}
+
+/* ==================== PAGE CONTENT ==================== */
+
+.main-content {
+  width: 100%;
+  max-width: 1500px;
+
+  margin: 0 auto;
+
+  padding: 40px;
+}
+
+/* ==================== MOBILE OVERLAY ==================== */
+
+.sidebar-overlay {
+  display: none;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-105%);
+    transition: transform 220ms ease;
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .application-content {
+    margin-left: 0;
+  }
+
+  .mobile-menu {
+    display: grid;
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+
+    display: block;
+
+    background: rgba(23, 59, 58, 0.18);
+
+    backdrop-filter: blur(3px);
+  }
+
+  .main-content {
+    padding: 28px 22px;
+  }
+}
+
+@media (max-width: 620px) {
+  .topbar {
+    min-height: 72px;
+    padding: 0 16px;
+  }
+
+  .user-details {
+    display: none;
+  }
+
+  .topbar-user {
+    gap: 8px;
+  }
+
+  .logout-button {
+    padding: 0 10px;
+  }
+
+  .main-content {
+    padding: 24px 16px;
+  }
+}
+
