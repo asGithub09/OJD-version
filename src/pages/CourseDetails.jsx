@@ -452,10 +452,8 @@ function CourseDetails({ courseId }) {
      * last opened lesson, resume from there.
      */
 
-    if (
-      progressPercentage > 0 &&
-      resumeLesson
-    ) {
+    
+    if(resumeLesson) {
       openLesson(
         resumeLesson.moduleId,
         resumeLesson.lessonId
