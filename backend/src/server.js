@@ -40,13 +40,35 @@ const PORT = process.env.PORT || 5000;
  * ============================================================
  */
 
+const configuredFrontendOrigins = (
+  process.env.FRONTEND_URL ||
+  process.env.FRONTEND_URLS ||
+  ""
+)
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 const allowedOrigins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "https://ojd-version.vercel.app",
+  // OJDV / Vite development
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
 
+  // JobWay / Next.js development
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
 
-  ];
+  // Existing production frontend
+  "https://ojd-version.vercel.app",
+
+  // Deployment-configured frontend origins
+  ...configuredFrontendOrigins,
+];
+
+console.log(
+  "Allowed CORS origins:",
+  allowedOrigins
+);
 
 
 /*
@@ -62,7 +84,6 @@ app.use(
     },
   })
 );
-
 
 app.use(
   cors({
@@ -117,9 +138,10 @@ app.use(cookieParser());
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
 
-  limit: process.env.NODE_ENV === "production"
-    ? 300
-    : 2000,
+  limit:
+    process.env.NODE_ENV === "production"
+      ? 300
+      : 2000,
 
   standardHeaders: "draft-7",
 
@@ -141,113 +163,56 @@ app.use("/api", apiLimiter);
  * ============================================================
  */
 
-
-/*
- * Authentication
- *
- * /api/auth
- */
 app.use(
   "/api/auth",
   authRoutes
 );
 
-
-
-/*
- * Admin Dashboard
- *
- * /api/admin
- */
 app.use(
   "/api/admin",
   adminRoutes
 );
 
-/*
- * Mock Tests
- *
- * /api/mock-tests
- */
 app.use(
   "/api/mock-tests",
   mockTestRoutes
 );
 
-
-
-/*
- * Mock Test Questions
- *
- * /api/mock-tests/:mockTestId/questions
- */
 app.use(
   "/api/mock-tests",
   mockQuestionRoutes
 );
 
-
-/*
- * Mock Test Attempts
- *
- * /api/mock-test-attempts
- */
 app.use(
   "/api/mock-test-attempts",
   mockTestAttemptRoutes
 );
-/*
- * Gamification
- *
- * /api/gamification
- */
+
 app.use(
   "/api/gamification",
   gamificationRoutes
 );
 
-/*
- * Courses
- *
- * /api/courses
- */
 app.use(
   "/api/courses",
   courseRoutes
 );
+
 app.use(
   "/api/course-progress",
   studentCourseProgressRoutes
 );
 
-
-/*
- * Course Modules
- *
- * /api/course-modules
- */
 app.use(
   "/api/course-modules",
   courseModuleRoutes
 );
 
-
-/*
- * Course Lessons
- *
- * /api/course-lessons
- */
 app.use(
   "/api/course-lessons",
   courseLessonRoutes
 );
 
-
-/*
- * Faculty
- *
- * /api/faculty
- */
 app.use(
   "/api/faculty",
   facultyRoutes
@@ -332,7 +297,7 @@ app.use(
           ? "Internal server error."
           : err.message ||
             "Internal server error.",
-      });
+    });
   }
 );
 
@@ -411,6 +376,5 @@ const startServer = async () => {
     process.exit(1);
   }
 };
-
 
 startServer();
